@@ -1,5 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, createContext } from 'react'
 import axios from "axios"
+
+import data from "./data/blsDataSample.json"
+
+export const {Consumer, Provider} = createContext()
 
 //set initial state
 const initialState = {
@@ -47,18 +51,26 @@ export default class DataProvider extends Component {
             }))
     }
 
-    handleClick(){
+    handleClick(e){
         this.getData()
     }
 
     render() {
-        
+        const chartContext = {
+            data: data,
+            getData: this.handleClick
+        }
         console.log(JSON.stringify(this.state.data))
         return (
-            <div>
-                Data Provider Test
-                {/* Return a Provider */}
-            </div>
+            <Provider value={chartContext}>
+                {this.props.children}
+            </Provider>
         )
     }
 }
+
+export const withChartContext = C => Cprops => (
+    <Consumer>
+        {value => <C {...value}{...Cprops} />}
+    </Consumer>
+)

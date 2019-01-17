@@ -1,19 +1,20 @@
 import React from 'react'
+import {Switch, Route} from "react-router-dom"
+import sidebarData from "./data/sidebarData"
+import Home from "./Home"
+import About from "./About"
 
-import SideBar from "./SideBar"
-import Header from "./Header"
-import Footer from "./Footer"
 import Chart from "./Chart"
 
 
 function MainView() {
     return (
-        <div>
-            <Header />
-            <SideBar />
-            <Chart />
-            <Footer />
+        <div className="main">
 
+          
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/study/:series_id" component={Chart} />
         </div>
     )
 }

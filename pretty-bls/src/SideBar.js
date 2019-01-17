@@ -4,7 +4,7 @@ import LinkGroup from "./LinkGroup"
 
 function SideBar() {
     return (
-        <div>
+        <div className="sidebar">
             <LinkGroup />
         </div>
     )
