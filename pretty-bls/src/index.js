@@ -3,9 +3,12 @@ import { render } from 'react-dom'
 
 import App from "./App"
 import {BrowserRouter} from "react-router-dom" 
+import DataProvider from "./DataProvider"
 
 render(
-    <BrowserRouter>
-        <App/>
-    </BrowserRouter>,   
+    <DataProvider>
+        <BrowserRouter>
+            <App/>
+        </BrowserRouter>
+    </DataProvider>    ,   
     document.getElementById("root"))

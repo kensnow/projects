@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    font-family: 'Libre Baskerville', serif;
+}
+
+h1 {
+    font-size: 3em;
+    text-align: center;
+
+}
+
+nav {
+    background: gold;
+}
+
+nav a{
+    font-size: 30px;
+    text-decoration: none;
+    color: inherit;
+    border: 2px darkgray solid;
+    
+}
+
+.sidebar a{
+    font-size: 24px;
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+}
+
+.main{
+    height:60vh;
+}

@@ -1,11 +1,11 @@
 import React from 'react'
-import {Link} from "react-router-dom"
+
 import BlsLink from "./BlsLink"
 import sidebarData from "./data/sidebarData"
 
 
 function LinkGroup() {
-    const linkGroup = sidebarData.map((button) => <BlsLink {...button}> </BlsLink>)
+    const linkGroup = sidebarData.map((button, i) => <BlsLink key={i} {...button}></BlsLink>)
   
     return (
         <div>

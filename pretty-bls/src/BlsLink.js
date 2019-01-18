@@ -1,12 +1,17 @@
 import React, {Router} from 'react'
+import {Link} from "react-router-dom"
+import {Consumer} from "./DataProvider"
 
 
-
-function Link({dataSeries}) {
-    
+function BlsLink(button) {
     return (
-        <Link></Link>
+        <Consumer>
+            {value => (<Link className="link" onClick={() => value.getDataInfo(button)} to={{
+                pathname: `/study/${button.series_id}`,
+                state:{button}
+            }}>{button.title}</Link>)}
+         </Consumer>
     )
 }
 
-export default Link
+export default BlsLink
