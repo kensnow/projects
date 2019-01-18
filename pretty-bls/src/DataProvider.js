@@ -40,12 +40,22 @@ export default class DataProvider extends Component {
         //placeholder for now until working, will switch out for seriesID once running
         // let id = this.seriesID
         // "https://api.bls.gov/publicAPI/v2/timeseries/data/"+seriesID
-
-        return axios.get("https://swapi.co/api/people/")
+        return axios({
+            method:"post",
+            url:"https://api.bls.gov/publicAPI/v2/timeseries/data/",
+            data:{
+                seriesid:[seriesID],
+                catalog:false, 
+                calculations:false, 
+                annualaverage:false,
+                registrationkey:"061d1f39d5ae46cdacdd66d4a26d23ea"
+            }
+        
+        })
             .then( response => 
                 this.setState({
                     series: seriesID,
-                    data: data.Results.series[0].data,
+                    data: response.data.Results.series[0].data,
                     loading: false,
                     errMsg: false
                 }))
@@ -54,16 +64,18 @@ export default class DataProvider extends Component {
                    loading:false,
                    errMsg:"Cannot get data"     
             }))
-
+    
         
-
+    
     }
+
+
 
     handleClick(button){
         
         ///make get data call with series ID, send state down to chart
-        // this.getData(button.series_id)
-        this.getData("fakedata")
+        this.getData(button.series_id)
+        // this.getData("fakedata")
     }
 
     render() {
@@ -126,5 +138,31 @@ getData(seriesID){
     
 
 }
+
+getData(seriesID){
+        // this.resetState();
+        //placeholder for now until working, will switch out for seriesID once running
+        // let id = this.seriesID
+        // "https://api.bls.gov/publicAPI/v2/timeseries/data/"+seriesID
+
+        return axios.get("https://swapi.co/api/people/")
+            .then( response => 
+                this.setState({
+                    series: seriesID,
+                    data: data.Results.series[0].data,
+                    loading: false,
+                    errMsg: false
+                }))
+            .catch( errMsg => 
+                this.setState({
+                   loading:false,
+                   errMsg:"Cannot get data"     
+            }))
+
+        
+
+    }
+
+
 
 */

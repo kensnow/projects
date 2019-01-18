@@ -63,7 +63,7 @@ class Chart extends Component{
 
                     
                 <div className="chart-wrapper">
-                    <h3>{this.props.}</h3>
+                    <h3></h3>
                     <div className="chart">
                         <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
                     </div>
