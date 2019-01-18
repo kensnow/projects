@@ -3,7 +3,10 @@ import axios from "axios"
 
 import data from "./data/blsDataSample.json"
 import {parseData, drawChart} from "./helperFunctions"
+import sidebarData from "./data/sidebarData"
+
 export const {Consumer, Provider} = createContext()
+
 
 //set initial state
 const initialState = {
@@ -17,6 +20,9 @@ const initialState = {
 // const url = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
 // const url = "https://swapi.co/api/people/"
 // const seriesID = "LNS14000000" //placeholder until I get buttons working
+
+
+
 
 
 export default class DataProvider extends Component {
@@ -52,12 +58,17 @@ export default class DataProvider extends Component {
             }
         
         })
-            .then( response => 
+            .then( response =>
+                 
                 this.setState({
                     series: seriesID,
                     data: response.data.Results.series[0].data,
                     loading: false,
-                    errMsg: false
+                    errMsg: false,
+                    title: sidebarData.find(chart => ( chart.series_id === seriesID)).title,
+                    subtitle: sidebarData.find(chart => ( chart.series_id === seriesID)).subtitle,
+                    description: sidebarData.find(chart => ( chart.series_id === seriesID)).description,
+
                 }))
             .catch( errMsg => 
                 this.setState({
@@ -80,11 +91,14 @@ export default class DataProvider extends Component {
 
     render() {
         // console.log(this.state.data)
-       const cleanData = parseData(this.state.data, this.state.seriesID)
+        const cleanData = parseData(this.state.data, this.state.series)
 
         const chartContext = {
             data: cleanData,
-            getDataInfo: this.handleClick
+            getDataInfo: this.handleClick,
+            title: this.state.title,
+            subtitle: this.state.subtitle,
+            description: this.state.description
         }
 
         return (

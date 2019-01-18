@@ -60,10 +60,10 @@ class Chart extends Component{
 
     render(){
         return (
-
-                    
+                   
                 <div className="chart-wrapper">
-                    <h3></h3>
+                    <h3>{this.props.title}</h3>
+                    <h5>{this.props.subtitle}</h5>
                     <div className="chart">
                         <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
                     </div>

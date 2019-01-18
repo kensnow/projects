@@ -1,10 +1,7 @@
 //{series_ID, freq, dataArr, title, subtitle, description}
-import sidebarData from "./data/sidebarData"
+
 
 export const parseData = (rawData, seriesId) => {
-    const localData = {
-        title: sidebarData.find(chart => {return chart.series_id === seriesId}).title
-    }
 
    return rawData.reduce((acc, dataObj) => ({
        ...dataObj,
