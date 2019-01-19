@@ -24,38 +24,48 @@ class Chart extends Component{
 
     updateWindowDimensions(){
         this.setState({
-            width: window.innerWidth < 400 ? 300 : (Math.round(window.innerWidth * .8)),
-            height: window.innerHeight < 600 ? 300 : (Math.round(window.innerHeight * .6))
+            width: document.getElementById('chart').clientWidth,
+            height: document.getElementById('chart').clientHeight
         })
     }
     createBarChart(){
         const node = this.node
+        const data = this.props.data.values
         const dataMax = d3.max(this.props.data.values)
+        const dataMin = d3.min(this.props.data.values)
+
+        // const x_axis = d3.axisBottom()
+        //     .scale(yScale)
+        //     .append("rect")
+
         const yScale = d3.scaleLinear()
-            .domain([0, dataMax])
-            .range([0, this.state.height])
+            .domain([dataMin, dataMax])
+            .range([dataMin, dataMax])
+
+
 
         d3.select(node)
             .selectAll("rect")
-            .data(this.props.data.values)
+            .data(data)
             .enter()
             .append("rect")
 
-        d3.select(node)
-            .selectAll("rect")
-            .data(this.props.data.values)
-            .exit()
-            .remove()
+        // d3.select(node)
+        //     .selectAll("rect")
+        //     .data(data)
+        //     .exit()
+        //     .remove()
 
         d3.select(node)
             .selectAll("rect")
-            .data(this.props.data.values)
+            .data(data)
             .style("fill",'#fe9922')
             .attr("x", (d,i) => i * 25) //not sure about 25 here
             .attr("y", d => this.state.height - yScale(d))
             .attr("height", d => yScale(d))
-            .attr("width", 25) //will need to consider making more dynamic
+            .attr("width", 20) //will need to consider making more dynamic
 
+            
     }
 
     render(){
@@ -64,7 +74,7 @@ class Chart extends Component{
                 <div className="chart-wrapper">
                     <h3>{this.props.title}</h3>
                     <h5>{this.props.subtitle}</h5>
-                    <div className="chart">
+                    <div className="chart" id="chart">
                         <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
                     </div>
                 </div>
