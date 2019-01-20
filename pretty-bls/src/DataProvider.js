@@ -42,7 +42,7 @@ export default class DataProvider extends Component {
     }
 
     getData(seriesID){
-        // this.resetState();
+        this.resetState();
         //placeholder for now until working, will switch out for seriesID once running
         // let id = this.seriesID
         // "https://api.bls.gov/publicAPI/v2/timeseries/data/"+seriesID
@@ -94,7 +94,8 @@ export default class DataProvider extends Component {
         const cleanData = parseData(this.state.data, this.state.series)
 
         const chartContext = {
-            data: cleanData,
+            // data: cleanData,
+            data: this.state.data,
             getDataInfo: this.handleClick,
             title: this.state.title,
             subtitle: this.state.subtitle,
