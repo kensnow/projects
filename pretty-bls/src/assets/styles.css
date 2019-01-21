@@ -4,54 +4,108 @@
 }
 
 #mainDiv{
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 10% auto 15%;
+    display: flex;
+    flex-direction: column;
+    margin: auto auto;
 }
 
 h1 {
     font-size: 3em;
-    text-align: center;
-
 }
 
+h1, h2, h3, h4, h5 {
+    font-weight: bold;
+    text-align: center;
+}
+
+
 nav {
-    background: #8CFBDE;
-    grid-column: 1 / 4;
+    display: flex;
+
 }
 
 nav a{
-    font-size: 30px;
+    font-size: 24px;
     text-decoration: none;
     color: inherit;
-  
-    
-    
+    padding: 5px;
 }
 
+nav .linkbar{
+    position: fixed;
+    right: 0;
+    margin: 5px;
+    /* background: snow; */
+    opacity: .7;
+}
 
+.linkbar a:hover{
+    position: relative;
+    transition: .4s;
+}
+.linkbar a:before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
 
-
+.linkbar a:hover:before{
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
 
 footer{
-    grid-row: 3;
-    grid-column: 1/4;
-    
+
 }
-.sidebar{
-    grid-row: 2/3;
-   
+
+.details{
+    margin: 10%;
+    line-height: 1.5em;
+    justify-content: center;
+    border-left: 3px solid rgb(8, 163, 29);
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.details h5{
+    opacity: .7;
+}
+
+.details h3{
+    font-weight: bold;
+}
+
+
+
+.link{
+    display:flex;
+    /* flex-direction: column; */
+}
+
+.sidebar h3{
+    text-align: left;
+    margin:10px;
+    margin-left: 30px;
 }
 
 .sidebar a{
     font-size: 1em;
-    
-    display: flex;
-    flex-direction: column;
     line-height: 2em;
     text-decoration: none;
     color: inherit;
     opacity: 1;
+
 }
 
 a:hover{
@@ -60,14 +114,15 @@ a:hover{
 }
 
 .main{
-    grid-column-start: 2;
-    height:65vh;
+  
 }
 
 .chart{
-    margin: 20px;
-    width: inherit;
+    margin: 10%;
     height: 65vh;
 
 }
 
+@media(min-width: 900px){
+
+}

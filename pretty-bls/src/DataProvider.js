@@ -2,7 +2,6 @@ import React, { Component, createContext } from 'react'
 import axios from "axios"
 
 import data from "./data/LNS14000000.json"
-import {parseData, drawChart} from "./helperFunctions"
 import sidebarData from "./data/sidebarData"
 
 export const {Consumer, Provider} = createContext()
@@ -48,21 +47,28 @@ export default class DataProvider extends Component {
         // let id = this.seriesID
         // "https://api.bls.gov/publicAPI/v2/timeseries/data/"+seriesID
 
-        return axios.get("https://swapi.co/api/people/")
-            .then( response => 
-                this.setState({
-                    series: seriesID,
-                    data: data.Results.series[0].data,
-                    loading: false,
-                    errMsg: false
-                }))
-            .catch( errMsg => 
-                this.setState({
-                   loading:false,
-                   errMsg:"Cannot get data"     
-            }))
+        // return axios.get("https://swapi.co/api/people/")
+        //     .then( response => 
+        //         this.setState({
+        //             series: seriesID,
+        //             data: data.Results.series[0].data,
+        //             loading: false,
+        //             errMsg: false
+        //         }))
+        //     .catch( errMsg => 
+        //         this.setState({
+        //            loading:false,
+        //            errMsg:"Cannot get data"     
+        //     }))
 
-        
+        return(
+            this.setState({
+                series: seriesID,
+                data: data.Results.series[0].data,
+                loading: false,
+                errMsg: false
+            })
+        )
 
     }
         
@@ -80,15 +86,16 @@ export default class DataProvider extends Component {
 
     render() {
         // console.log(this.state.data)
-        const cleanData = parseData(this.state.data, this.state.series)
-
+        
         const chartContext = {
-            // data: cleanData,
+            ///need to refactor to simply this.state
             data: this.state.data,
             getDataInfo: this.handleClick,
             title: this.state.title,
             subtitle: this.state.subtitle,
-            description: this.state.description
+            description: this.state.description,
+            loading: this.state.loading,
+            errMsg: this.state.errMsg
         }
 
         return (

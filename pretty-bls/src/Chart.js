@@ -3,14 +3,14 @@
 import * as d3 from "d3"
 
 import { withChartContext } from "./DataProvider"
-
+import ChartDetails from "./ChartDetails"
 
 
 class Chart extends Component {
     //need helper functions to parse data & determine chart type
     constructor(props) {
         super(props);
-        this.state = { width: 0, height: 0, data: props }
+        this.state = { width: 0, height: 0, data:props }
         this.createBarChart = this.createBarChart.bind(this)
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     }
@@ -41,7 +41,6 @@ class Chart extends Component {
 
         const valuesMap = dataObj.map((d, i )=> (+d.value)+(i/10000)) //get an array of data called valuesMap... i/10000 is a workaround to the unique values issue
        
-        console.log(valuesMap)
         const freqMap = dataObj.map(d => 
             {
                 var months = new Array(12);
@@ -93,9 +92,9 @@ class Chart extends Component {
             .padding(.1)
             .range([0, width])
         
-        const xScale = d3.scaleOrdinal()
-            .domain(valuesMap)
-            .range([0,freqMap.length])
+        // const xScale = d3.scaleOrdinal()
+        //     .domain(valuesMap)
+        //     .range([0,freqMap.length])
 
         const xAxisValues = d3.scaleTime()
             // .domain([freqMap[0],freqMap[freqMap.length-1]])
@@ -103,8 +102,9 @@ class Chart extends Component {
             .range([0, width])
 
         const xAxisTicks = d3.axisBottom(xAxisValues)
-            .ticks(12)
+            .ticks(width <= 400 ? 4 : 12) //dynamically change #ticks based on size
         
+            console.log(width)
         //dynamically change bar colors based on size
         const colors = d3.scaleLinear()
             .domain([dataMin, dataMax])
@@ -148,8 +148,9 @@ class Chart extends Component {
             .call(yAxisTicks)
 
         const xGuide = d3.select(node).append('g')
-            .attr('transform', `translate(15,${height + 20})`)
+            .attr('transform', `translate(40,${height + 20})`)
             .call(xAxisTicks)
+            
 
         myChart.transition()
             .attr("height", (d) => yScale(d))
@@ -162,13 +163,13 @@ class Chart extends Component {
 
     render() {
         return (
-
-            <div className="chart-wrapper">
-                <h3>{this.props.title}</h3>
-                <h5>{this.props.subtitle}</h5>
-                <div className="chart" id="chart">
-                    <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
-                </div>
+                <div className="chart-wrapper">
+                    <h3>{this.props.title}</h3>
+                    <h5>{this.props.subtitle}</h5>
+                    <div className="chart" id="chart">
+                        <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
+                    </div>
+                <ChartDetails props={this.state.data}/>
             </div>
 
         )
