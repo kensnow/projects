@@ -1,13 +1,10 @@
-{"status":"REQUEST_SUCCEEDED","responseTime":147,"message":[],
-"Results":{
-"series":
-[
-    {
-        "seriesID": "LNS14000006",
-        "data": [
+
+
+const fakeData = {
+        data: [
             {
-                "year": "2018",
-                "period": "M12",
+                year: "2018",
+                period: "M12",
                 "periodName": "December",
                 "latest": "true",
                 "value": "6.6",
@@ -332,5 +329,5 @@
             }
         ]
     }
-]
-}}
+
+    export default fakeData

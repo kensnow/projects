@@ -3,6 +3,12 @@
     font-family: 'Libre Baskerville', serif;
 }
 
+#mainDiv{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 10% auto 15%;
+}
+
 h1 {
     font-size: 3em;
     text-align: center;
@@ -10,31 +16,58 @@ h1 {
 }
 
 nav {
-    background: gold;
+    background: #8CFBDE;
+    grid-column: 1 / 4;
 }
 
 nav a{
     font-size: 30px;
     text-decoration: none;
     color: inherit;
-    border: 2px darkgray solid;
+  
+    
     
 }
 
+
+
+
+
+footer{
+    grid-row: 3;
+    grid-column: 1/4;
+    
+}
+.sidebar{
+    grid-row: 2/3;
+   
+}
+
 .sidebar a{
-    font-size: 24px;
+    font-size: 1em;
+    
     display: flex;
+    flex-direction: column;
+    line-height: 2em;
     text-decoration: none;
     color: inherit;
+    opacity: 1;
+}
+
+a:hover{
+    opacity: .6;
+    transition: .4s;
 }
 
 .main{
-    height:60vh;
+    grid-column-start: 2;
+    height:65vh;
 }
 
 .chart{
     margin: 20px;
-    width: 70vw;
-    height: 60vh;
-    border: 5px solid orange;
+    width: inherit;
+    height: 65vh;
+
 }
+

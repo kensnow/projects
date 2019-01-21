@@ -7,7 +7,7 @@ import Footer from "./Footer"
 import "./assets/styles.css"
 function App() {
     return (
-        <div>
+        <div id="mainDiv">
             <Header />
             <MainView />
             <SideBar />
