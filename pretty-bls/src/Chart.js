@@ -33,8 +33,6 @@ class Chart extends Component {
     createBarChart() {
         d3.selectAll(`svg > *`).remove() //clear previous chart
         
-        return new Promise ((rej, res) => {
-        
         const node = this.node
 
         const dataObj = this.props.data //enable when using api
@@ -103,8 +101,7 @@ class Chart extends Component {
 
         const xAxisTicks = d3.axisBottom(xAxisValues)
             .ticks(width <= 400 ? 4 : 12) //dynamically change #ticks based on size
-        
-            console.log(width)
+    
         //dynamically change bar colors based on size
         const colors = d3.scaleLinear()
             .domain([dataMin, dataMax])
@@ -118,8 +115,6 @@ class Chart extends Component {
         
 
         const myChart = d3.select(node)
-       
-
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
             
@@ -141,11 +136,12 @@ class Chart extends Component {
             // .attr('x', ((d,i) => xScale(i)))
             .attr('y', height)
             .attr('class', 'bar')
-            //.attr("y", d => height - yScale(d)) //position bars at bottom
-       
+            //.attr("y", d => height - yScale(d)) //position bars at bottom  
+
         const yGuide = d3.select(node).append('g')
             .attr('transform', 'translate(40,20)')
             .call(yAxisTicks)
+            
 
         const xGuide = d3.select(node).append('g')
             .attr('transform', `translate(40,${height + 20})`)
@@ -158,15 +154,19 @@ class Chart extends Component {
             .delay((d, i) => i * 10)
             .duration(1000)
             .ease(d3.easeBackInOut)
-        })    
+           
     }
 
     render() {
+
+        const infoObj = this.props.location.state.button
+
         return (
                 <div className="chart-wrapper">
-                    <h3>{this.props.title}</h3>
-                    <h5>{this.props.subtitle}</h5>
+                    <h3>{infoObj.title}</h3>
+                    <h5>{infoObj.subtitle}</h5>
                     <div className="chart" id="chart">
+                        <h6 className="yAxis-title">{infoObj.yScaleName}</h6>
                         <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
                     </div>
                 <ChartDetails props={this.state.data}/>

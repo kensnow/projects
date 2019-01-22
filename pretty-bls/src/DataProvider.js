@@ -1,7 +1,9 @@
 import React, { Component, createContext } from 'react'
 import axios from "axios"
 
-import data from "./data/LNS14000000.json"
+// import data from "./data/LNS14000000.json" //unemployment rate
+// import data from "./data/CUUR0000SA0.json"  //Consumer Price Index
+import data from "./data/CES0000000001.json" //total nonfarm payroll
 import sidebarData from "./data/sidebarData"
 
 export const {Consumer, Provider} = createContext()

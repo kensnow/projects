@@ -8,7 +8,8 @@ function LinkGroup() {
     const linkGroup = sidebarData.map((button, i) => <BlsLink key={i} {...button}></BlsLink>)
   
     return (
-        <div>
+        <div className="data-group">
+            <h3>Data Series</h3>
             <ul>
                 {linkGroup}
             </ul>

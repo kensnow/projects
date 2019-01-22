@@ -11,6 +11,7 @@
 
 h1 {
     font-size: 3em;
+    margin: 5px;
 }
 
 h1, h2, h3, h4, h5 {
@@ -25,7 +26,7 @@ nav {
 }
 
 nav a{
-    font-size: 24px;
+    font-size: 1.2em;
     text-decoration: none;
     color: inherit;
     padding: 5px;
@@ -37,6 +38,18 @@ nav .linkbar{
     margin: 5px;
     /* background: snow; */
     opacity: .7;
+}
+
+footer a{
+    text-decoration: none;
+    color:inherit;
+}
+footer{
+    margin: 5%;
+}
+.data-group{
+   
+   
 }
 
 .linkbar a:hover{
@@ -58,6 +71,7 @@ nav .linkbar{
     transition: all 0.3s ease-in-out 0s;
 }
 
+
 .linkbar a:hover:before{
     visibility: visible;
     -webkit-transform: scaleX(1);
@@ -69,7 +83,7 @@ footer{
 }
 
 .details{
-    margin: 10%;
+    margin: 5%;
     line-height: 1.5em;
     justify-content: center;
     border-left: 3px solid rgb(8, 163, 29);
@@ -95,21 +109,30 @@ footer{
 
 .sidebar h3{
     text-align: left;
-    margin:10px;
-    margin-left: 30px;
+    margin-left: 20px;
+    padding:10px;
 }
 
 .sidebar a{
-    font-size: 1em;
+  
     line-height: 2em;
     text-decoration: none;
     color: inherit;
     opacity: 1;
 
 }
+.sidebar{
+    display: flex;
+    justify-content:center; 
+}
+
+.center {
+    margin: 15% 10%;
+}
 
 a:hover{
     opacity: .6;
+    color: #3D9970;
     transition: .4s;
 }
 
@@ -117,12 +140,38 @@ a:hover{
   
 }
 
+.chart-wrapper{
+    /* margin-top:10%; */
+}
 .chart{
-    margin: 10%;
+    margin: 5%;
     height: 65vh;
 
 }
 
+
+@media(min-width: 600px){
+    .linkbar{
+    
+        font-size: 1.3em;
+        padding: 10px;
+    }
+    h1{
+        font-size: 4em;
+        padding: 5px;
+    }
+}
+
 @media(min-width: 900px){
 
+    h1{
+        font-size: 5em;
+        padding: 10px;
+    }
+
+    .linkbar{
+    
+        font-size: 1.6em;
+        padding: 20px;
+    }
 }

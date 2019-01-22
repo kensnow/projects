@@ -3,7 +3,7 @@ import React from 'react'
 function Home() {
     return (
         <div className="center">
-            Default information goes here!
+            <h4>important data should look pretty good.</h4>
         </div>
     )
 }

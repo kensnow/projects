@@ -9,7 +9,7 @@ function Header() {
             <div className="linkbar">
                 <Link className="link" to="/">Home</Link>
                 <Link className="link" to="/about">About</Link>
-                <a className="link" href="#sidebar">Data</a>
+                <a className="link" href="/#sidebar">Data</a>
             </div>
         </nav>
     )
