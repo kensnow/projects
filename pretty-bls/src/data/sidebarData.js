@@ -46,7 +46,7 @@ const sidebarData = [
     },{
     title:"Average Hourly Earnings",
     subtitle:"Net Change, All employees, total private, seasonally adjusted",
-    yScaleName:"percent",
+    yScaleName:"$ USD",
     series_id:"CES0500000003",
     icon:`url(${require("../assets/tool.png")})`,
     description:"The average amount employees make per hour in the United States in a given month. It is calculated by the Bureau of Labor Statistics each month; the Federal Reserve uses average hourly earnings in deciding whether to raise or lower interest rates."

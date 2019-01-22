@@ -47,10 +47,7 @@ footer a{
 footer{
     margin: 5%;
 }
-.data-group{
-   
-   
-}
+
 
 .linkbar a:hover{
     position: relative;
@@ -148,6 +145,8 @@ a:hover{
     height: 65vh;
 
 }
+
+
 
 
 @media(min-width: 600px){

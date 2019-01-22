@@ -64,7 +64,7 @@ class Chart extends Component {
         const dataMax = d3.max(valuesMap)
         const dataMin = d3.min(valuesMap)
         //parameters
-        const margin = {top: 20, right: 20, bottom: 20, left: 40}
+        const margin = {top: 20, right: 20, bottom: 20, left: 50}
         const height = this.state.height - margin.top - margin.bottom
         const width = this.state.width - margin.left - margin.right
         
@@ -74,12 +74,14 @@ class Chart extends Component {
         
         //set up scales to chart fills correctly, use linear for percent charts (0-100) and
         // percent change charts
+            
+
         const yScale = d3.scaleLinear()
-            .domain([dataMin, dataMax])
-            .range([dataMin, height])
+            .domain([dataMin - (dataMin *.02), dataMax +(dataMax * .02)]) //lift floor of data off 2%
+            .range([0, height])
 
         const yAxisValues = d3.scaleLinear()
-            .domain([dataMin, dataMax])
+            .domain([dataMin - (dataMin *.02), dataMax +(dataMax * .02)])
             .range([height,0]) //need to reverse to correct scale drawing
 
         const yAxisTicks = d3.axisLeft(yAxisValues)
@@ -139,12 +141,12 @@ class Chart extends Component {
             //.attr("y", d => height - yScale(d)) //position bars at bottom  
 
         const yGuide = d3.select(node).append('g')
-            .attr('transform', 'translate(40,20)')
+            .attr('transform', 'translate(50,20)')
             .call(yAxisTicks)
             
 
         const xGuide = d3.select(node).append('g')
-            .attr('transform', `translate(40,${height + 20})`)
+            .attr('transform', `translate(50,${height + 20})`)
             .call(xAxisTicks)
             
 
@@ -165,6 +167,7 @@ class Chart extends Component {
                 <div className="chart-wrapper">
                     <h3>{infoObj.title}</h3>
                     <h5>{infoObj.subtitle}</h5>
+                 
                     <div className="chart" id="chart">
                         <h6 className="yAxis-title">{infoObj.yScaleName}</h6>
                         <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
