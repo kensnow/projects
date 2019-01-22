@@ -1,6 +1,5 @@
 import React from 'react'
-import {Switch, Route} from "react-router-dom"
-import sidebarData from "./data/sidebarData"
+import {Route} from "react-router-dom"
 import Home from "./Home"
 import About from "./About"
 import {Consumer} from "./DataProvider"

@@ -1,16 +1,12 @@
 import React from 'react'
-import {Consumer} from "./DataProvider"
 
-
-function ChartDetails({props}) {
-    
-    // let call = props.data.location.state.button
+function ChartDetails({title,subtitle,description}) {
 
     return (
         <div className="details">
-            <h3>{props.title}</h3>
-            <h5>{props.subtitle}</h5>
-            <p>{props.description}</p>
+            <h3>{title}</h3>
+            <h5>{subtitle}</h5>
+            <p>{description}</p>
         </div>
     )
 }

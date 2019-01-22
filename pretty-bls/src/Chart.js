@@ -34,8 +34,6 @@ class Chart extends Component {
         d3.selectAll(`svg > *`).remove() //clear previous chart
         
         const node = this.node
-
-        console.log(this.props)
         const dataObj = this.props.data //enable when using api
 
         const valuesMap = dataObj.map((d, i )=> (+d.value)+(i/10000)) //get an array of data called valuesMap... i/10000 is a workaround to the unique values issue
@@ -60,8 +58,7 @@ class Chart extends Component {
         
         valuesMap.reverse() //fix data series from BLS so chart reads left to right
         freqMap.reverse() //fix data series from BLS
-        // const dataMax = d3.max(dataObj, (d) => { return d.value })
-        // const dataMin = d3.min(dataObj, (d) => { return d.value })
+
         const dataMax = d3.max(valuesMap)
         const dataMin = d3.min(valuesMap)
         //parameters
@@ -88,13 +85,8 @@ class Chart extends Component {
             .domain(valuesMap)
             .padding(.1)
             .range([0, width])
-        
-        // const xScale = d3.scaleOrdinal()
-        //     .domain(valuesMap)
-        //     .range([0,freqMap.length])
 
         const xAxisValues = d3.scaleTime()
-            // .domain([freqMap[0],freqMap[freqMap.length-1]])
             .domain([freqMap[0], freqMap[freqMap.length-1]])
             .range([0, width])
 
@@ -106,36 +98,24 @@ class Chart extends Component {
             .domain([dataMin, dataMax])
             .range(['#341C1C', '#ADFCF9'])
 
-        //*****
-        // const x_axis = d3.axisBottom()
-        //     .scale(yScale)
-        //     .append("rect")
-
-        
-
         const myChart = d3.select(node)
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
-            
-            .append('g')
-            
+          .append('g')
           .selectAll('rect')
             .data(valuesMap)
-          .enter().append('rect')
+          .enter()
+          .append('rect')
           
-           
-
             .attr('transform', `translate(${margin.left},${margin.right})`)
        
             .attr("fill", (d) => colors(d))
             .attr("width", (d) => xScaleBand.bandwidth()) // calculate width of each bar
-            // .attr('height', 0)
             .attr("height", (d) => yScale(d))
             .attr("x", (d,i) => xScaleBand(d)) //spread bars out using width and offset
-            // .attr('x', ((d,i) => xScale(i)))
+
             .attr('y', height)
             .attr('class', 'bar')
-            //.attr("y", d => height - yScale(d)) //position bars at bottom  
 
         const yGuide = d3.select(node).append('g')
             .attr('transform', 'translate(50,20)')
@@ -158,19 +138,23 @@ class Chart extends Component {
 
     render() {
 
-        const infoObj = this.props.location.state.button
+        const {title, subtitle, yScaleName, description, series_id, ...props} = this.props.location.state.button
 
         return (
-                <div className="chart-wrapper">
-                    <h3>{infoObj.title}</h3>
-                    <h5>{infoObj.subtitle}</h5>
-                    {/* <button>Default</button><button>10 years</button><button>20 years</button> */}
-                    <div className="chart" id="chart">
-                        <h6 className="yAxis-title">{infoObj.yScaleName}</h6>
-                        <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
-                    </div>
-                
-                <ChartDetails props={infoObj}/>
+            <div className="chart-wrapper">
+                <h3>{title}</h3>
+                <h5>{subtitle}</h5>
+                <div className="time-button-container">
+                <button className="time-button 3-year" onClick={() => { this.props.getDataInfo(series_id, 3) }} >3 Years</button>
+                <button className="time-button 10-year" onClick={() => { this.props.getDataInfo(series_id, 10) }}>10 years</button>
+                <button className="time-button 20-year" onClick={() => { this.props.getDataInfo(series_id, 20) }}>20 years</button>
+                </div>
+                <div className="chart" id="chart">
+                    <h6 className="yAxis-title">{yScaleName}</h6>
+                    <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
+                </div>
+
+                <ChartDetails title={title} subtitle={subtitle} description={description} />
             </div>
 
         )

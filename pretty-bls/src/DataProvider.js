@@ -1,5 +1,6 @@
 import React, { Component, createContext } from 'react'
 import axios from "axios"
+import sidebarData from "./data/sidebarData"
 
 // import data from "./data/LNS14000000.json" //unemployment rate
 // import data from "./data/CUUR0000SA0.json"  //Consumer Price Index
@@ -12,8 +13,6 @@ import axios from "axios"
 // import data from "./data/CIU2010000000000A.json" //total compensation % change
 // import data from "./data/PRS84006092.json"
 
-import sidebarData from "./data/sidebarData"
-
 export const {Consumer, Provider} = createContext()
 
 
@@ -23,16 +22,7 @@ const initialState = {
     data:[],
     loading: true,
     errMsg: null,
-    // blsApi: "https://api.bls.gov/publicAPI/v2/timeseries/data/"
 }
-
-// const url = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
-// const url = "https://swapi.co/api/people/"
-// const seriesID = "LNS14000000" //placeholder until I get buttons working
-
-
-
-
 
 export default class DataProvider extends Component {
     constructor(){
@@ -61,22 +51,23 @@ export default class DataProvider extends Component {
     //             errMsg: false
     //         })
     //     )
+ 
+    // } //end fake get data
 
-    // }
-    getData(seriesID){
-        // this.resetState();
-        //placeholder for now until working, will switch out for seriesID once running
-        // let id = this.seriesID
-        // "https://api.bls.gov/publicAPI/v2/timeseries/data/"+seriesID
+    getData(seriesID, timeParam){
+        let currentYear = (new Date()).getFullYear()
+        let startYear = currentYear - timeParam
         return axios({
             method:"post",
             url:"https://api.bls.gov/publicAPI/v2/timeseries/data/",
             data:{
                 seriesid:[seriesID],
+                endyear:currentYear-1, //  Need to -1 because data is not all 2019 yet, request fails if not correct
                 catalog:false, 
                 calculations:false, 
                 annualaverage:false,
-                registrationkey:"061d1f39d5ae46cdacdd66d4a26d23ea"
+                registrationkey:"061d1f39d5ae46cdacdd66d4a26d23ea",
+                startyear:startYear,
             }
     
         })
@@ -88,7 +79,9 @@ export default class DataProvider extends Component {
                     errMsg: false,
                     title: sidebarData.find(chart => ( chart.series_id === seriesID)).title,
                     subtitle: sidebarData.find(chart => ( chart.series_id === seriesID)).subtitle,
-                    description: sidebarData.find(chart => ( chart.series_id === seriesID)).description,
+                    description: sidebarData.find(chart => ( chart.series_id === seriesID)).description
+
+
                 }))
             .catch( errMsg => 
                 this.setState({
@@ -97,7 +90,7 @@ export default class DataProvider extends Component {
             }))
     
         
-    }
+    }//end real get data
     
 
     
@@ -105,18 +98,18 @@ export default class DataProvider extends Component {
 
 
 
-    handleClick(button){
-        
+    handleClick(button, timeParam){
+
         ///make get data call with series ID, send state down to chart
-        this.getData(button.series_id)
+
+        button.series_id ? this.getData(button.series_id, 3) : this.getData(button, timeParam)
         
     }
 
-    render() {
-        console.log("*****"+JSON.stringify(this.state))
-        
+    render() {       
+
         const chartContext = {
-            ///need to refactor to simply this.state
+           
             data: this.state.data,
             getDataInfo: this.handleClick,
             title: this.state.title,
@@ -139,129 +132,3 @@ export const withChartContext = C => Cprops => (
         {value => <C {...value}{...Cprops} />}
     </Consumer>
 )
-
-
-/// not fully working BLS code
-
-
-/*
-getData(seriesID){
-        this.resetState();
-        //placeholder for now until working, will switch out for seriesID once running
-        // let id = this.seriesID
-        // "https://api.bls.gov/publicAPI/v2/timeseries/data/"+seriesID
-        return axios({
-            method:"post",
-            url:"https://api.bls.gov/publicAPI/v2/timeseries/data/",
-            data:{
-                seriesid:[seriesID],
-                catalog:false, 
-                calculations:false, 
-                annualaverage:false,
-                registrationkey:"061d1f39d5ae46cdacdd66d4a26d23ea"
-            }
-        
-        })
-            .then( response =>
-                 
-                this.setState({
-                    series: seriesID,
-                    data: response.data.Results.series[0].data,
-                    loading: false,
-                    errMsg: false,
-                    title: sidebarData.find(chart => ( chart.series_id === seriesID)).title,
-                    subtitle: sidebarData.find(chart => ( chart.series_id === seriesID)).subtitle,
-                    description: sidebarData.find(chart => ( chart.series_id === seriesID)).description,
-
-                }))
-            .catch( errMsg => 
-                this.setState({
-                   loading:false,
-                   errMsg:"Cannot get data"     
-            }))
-*/
-
-
-
-
-
-/*
-getData(seriesID){
-    // this.resetState();
-    //placeholder for now until working, will switch out for seriesID once running
-    // let id = this.seriesID
-    // "https://api.bls.gov/publicAPI/v2/timeseries/data/"+seriesID
-    return axios({
-        method:"post",
-        url:"https://api.bls.gov/publicAPI/v2/timeseries/data/",
-        data:{
-            seriesid:[seriesID],
-            catalog:false, 
-            calculations:false, 
-            annualaverage:false,
-            registrationkey:"061d1f39d5ae46cdacdd66d4a26d23ea"
-        }
-
-    })
-        .then( response => 
-            this.setState({
-                series: seriesID,
-                data: response.data.Results.series[0].data.value,
-                loading: false,
-                errMsg: false
-            }))
-        .catch( errMsg => 
-            this.setState({
-               loading:false,
-               errMsg:"Cannot get data"     
-        }))
-
-    
-
-}
-
-getData(seriesID){
-        // this.resetState();
-        //placeholder for now until working, will switch out for seriesID once running
-        // let id = this.seriesID
-        // "https://api.bls.gov/publicAPI/v2/timeseries/data/"+seriesID
-
-        return axios.get("https://swapi.co/api/people/")
-            .then( response => 
-                this.setState({
-                    series: seriesID,
-                    data: data.Results.series[0].data,
-                    loading: false,
-                    errMsg: false
-                }))
-            .catch( errMsg => 
-                this.setState({
-                   loading:false,
-                   errMsg:"Cannot get data"     
-            }))
-
-        
-
-    }
-
-        // this.resetState();
-        //placeholder for now until working, will switch out for seriesID once running
-        // let id = this.seriesID
-        // "https://api.bls.gov/publicAPI/v2/timeseries/data/"+seriesID
-
-        // return axios.get("https://swapi.co/api/people/")
-        //     .then( response => 
-        //         this.setState({
-        //             series: seriesID,
-        //             data: data.Results.series[0].data,
-        //             loading: false,
-        //             errMsg: false
-        //         }))
-        //     .catch( errMsg => 
-        //         this.setState({
-        //            loading:false,
-        //            errMsg:"Cannot get data"     
-        //     }))
-
-
-*/

@@ -19,6 +19,10 @@ h1, h2, h3, h4, h5 {
     text-align: center;
 }
 
+h3 {
+    font-size:1.5em
+}
+
 
 nav {
     display: flex;
@@ -48,6 +52,29 @@ footer{
     margin: 5%;
 }
 
+.time-button-container{
+    display: flex;
+    justify-content: center;
+}
+.time-button{
+    
+    text-decoration: none;
+    background:inherit;
+    border: inherit;
+    font-size: 1em;
+    margin: 15px ;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+
+    
+}
+
+.bar:hover{
+    opacity: .3;
+    transition: .15s;
+
+}
 
 .linkbar a:hover{
     position: relative;
@@ -75,9 +102,6 @@ footer{
     transform: scaleX(1);
 }
 
-footer{
-
-}
 
 .details{
     margin: 5%;
@@ -87,17 +111,12 @@ footer{
     padding: 5px;
     border-radius: 4px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
 }
 
-.details h5{
+h5{
     opacity: .7;
 }
-
-.details h3{
-    font-weight: bold;
-}
-
-
 
 .link{
     display:flex;
@@ -133,13 +152,6 @@ a:hover{
     transition: .4s;
 }
 
-.main{
-  
-}
-
-.chart-wrapper{
-    /* margin-top:10%; */
-}
 .chart{
     margin: 5%;
     height: 65vh;

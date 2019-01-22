@@ -3,7 +3,8 @@ import React from 'react'
 function Home() {
     return (
         <div className="center">
-            <h4>important data should look pretty good.</h4>
+            <h3>important data should look pretty good.</h3>
+            <h5>pretty BLS</h5>
         </div>
     )
 }
