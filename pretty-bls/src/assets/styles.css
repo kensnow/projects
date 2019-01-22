@@ -53,7 +53,7 @@ footer{
     position: relative;
     transition: .4s;
 }
-.linkbar a:before{
+.linkbar :before{
     content: "";
     position: absolute;
     width: 100%;

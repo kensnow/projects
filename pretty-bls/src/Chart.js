@@ -35,6 +35,7 @@ class Chart extends Component {
         
         const node = this.node
 
+        console.log(this.props)
         const dataObj = this.props.data //enable when using api
 
         const valuesMap = dataObj.map((d, i )=> (+d.value)+(i/10000)) //get an array of data called valuesMap... i/10000 is a workaround to the unique values issue
@@ -67,10 +68,6 @@ class Chart extends Component {
         const margin = {top: 20, right: 20, bottom: 20, left: 50}
         const height = this.state.height - margin.top - margin.bottom
         const width = this.state.width - margin.left - margin.right
-        
-        const barWidth = 30
-        const barOffset = 5
-        const indices = d3.range(0,freqMap.length)
         
         //set up scales to chart fills correctly, use linear for percent charts (0-100) and
         // percent change charts
@@ -167,12 +164,13 @@ class Chart extends Component {
                 <div className="chart-wrapper">
                     <h3>{infoObj.title}</h3>
                     <h5>{infoObj.subtitle}</h5>
-                 
+                    {/* <button>Default</button><button>10 years</button><button>20 years</button> */}
                     <div className="chart" id="chart">
                         <h6 className="yAxis-title">{infoObj.yScaleName}</h6>
                         <svg ref={node => this.node = node} width={this.state.width} height={this.state.height}></svg>
                     </div>
-                <ChartDetails props={this.state.data}/>
+                
+                <ChartDetails props={infoObj}/>
             </div>
 
         )

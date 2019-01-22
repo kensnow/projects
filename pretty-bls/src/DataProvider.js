@@ -10,7 +10,7 @@ import axios from "axios"
 // import data from "./data/CES0500000003.json"  //svg hrly earnings
 // import data from "./data/PCUOMFG--OMFG--.json"  //Producer Price index
 // import data from "./data/CIU2010000000000A.json" //total compensation % change
-import data from "./data/PRS84006092.json"
+// import data from "./data/PRS84006092.json"
 
 import sidebarData from "./data/sidebarData"
 
@@ -51,37 +51,55 @@ export default class DataProvider extends Component {
     }
 
     
+    // getData(seriesID){
+
+    //     return(
+    //         this.setState({
+    //             series: seriesID,
+    //             data: data.Results.series[0].data,
+    //             loading: false,
+    //             errMsg: false
+    //         })
+    //     )
+
+    // }
     getData(seriesID){
         // this.resetState();
         //placeholder for now until working, will switch out for seriesID once running
         // let id = this.seriesID
         // "https://api.bls.gov/publicAPI/v2/timeseries/data/"+seriesID
-
-        // return axios.get("https://swapi.co/api/people/")
-        //     .then( response => 
-        //         this.setState({
-        //             series: seriesID,
-        //             data: data.Results.series[0].data,
-        //             loading: false,
-        //             errMsg: false
-        //         }))
-        //     .catch( errMsg => 
-        //         this.setState({
-        //            loading:false,
-        //            errMsg:"Cannot get data"     
-        //     }))
-
-        return(
-            this.setState({
-                series: seriesID,
-                data: data.Results.series[0].data,
-                loading: false,
-                errMsg: false
-            })
-        )
-
-    }
+        return axios({
+            method:"post",
+            url:"https://api.bls.gov/publicAPI/v2/timeseries/data/",
+            data:{
+                seriesid:[seriesID],
+                catalog:false, 
+                calculations:false, 
+                annualaverage:false,
+                registrationkey:"061d1f39d5ae46cdacdd66d4a26d23ea"
+            }
+    
+        })
+            .then( response => 
+                this.setState({
+                    series: seriesID,
+                    data: response.data.Results.series[0].data,
+                    loading: false,
+                    errMsg: false,
+                    title: sidebarData.find(chart => ( chart.series_id === seriesID)).title,
+                    subtitle: sidebarData.find(chart => ( chart.series_id === seriesID)).subtitle,
+                    description: sidebarData.find(chart => ( chart.series_id === seriesID)).description,
+                }))
+            .catch( errMsg => 
+                this.setState({
+                   loading:false,
+                   errMsg:"Cannot get data"     
+            }))
+    
         
+    }
+    
+
     
     
 
@@ -91,11 +109,11 @@ export default class DataProvider extends Component {
         
         ///make get data call with series ID, send state down to chart
         this.getData(button.series_id)
-        // this.getData("fakedata")
+        
     }
 
     render() {
-        // console.log(this.state.data)
+        console.log("*****"+JSON.stringify(this.state))
         
         const chartContext = {
             ///need to refactor to simply this.state
@@ -226,6 +244,24 @@ getData(seriesID){
 
     }
 
+        // this.resetState();
+        //placeholder for now until working, will switch out for seriesID once running
+        // let id = this.seriesID
+        // "https://api.bls.gov/publicAPI/v2/timeseries/data/"+seriesID
+
+        // return axios.get("https://swapi.co/api/people/")
+        //     .then( response => 
+        //         this.setState({
+        //             series: seriesID,
+        //             data: data.Results.series[0].data,
+        //             loading: false,
+        //             errMsg: false
+        //         }))
+        //     .catch( errMsg => 
+        //         this.setState({
+        //            loading:false,
+        //            errMsg:"Cannot get data"     
+        //     }))
 
 
 */
