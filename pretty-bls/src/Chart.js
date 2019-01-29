@@ -36,8 +36,9 @@ class Chart extends Component {
         const node = this.node
         const dataObj = this.props.data //enable when using api
 
-        const valuesMap = dataObj.map((d, i )=> (+d.value)+(i/10000)) //get an array of data called valuesMap... i/10000 is a workaround to the unique values issue
-       
+         const valuesMap = dataObj.map((d, i )=> (+d.value)+(i/10000)) //get an array of data called valuesMap... i/10000 is a workaround to the unique values issue
+        // const valuesMap = dataObj.map((d )=> (+d.value)) 
+
         const freqMap = dataObj.map(d => 
             {
                 var months = new Array(12);
