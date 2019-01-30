@@ -9,7 +9,7 @@ psw: {
     required: true
 },
 level: Number,
-experiencePoints: Number,
+xp: Number,
 activeTrails:[{
     trail: ObjectId,
     dateAccepted: {
@@ -59,24 +59,41 @@ completedQuests:[{
 }]
 
 
+# ObjectiveRepo
+//the objective repo holds single objectives or goals, such as a mountain summit or point of interest. Objectives form the basis for larger scale quests.
+
+objectiveName:{
+    type: String,
+    required: true
+},
+imageRef:String,const
+trailOptions:[Trail Ref],
+relatedQuests: [Quest id, Questid],
+elevation:Number,
+expVal: Number,
+subArea: String,
+area: String,
+state: String,
+
 # TrailRepo
-//the trail repo is a collection of trails which serve as the basic objectives to assign users, and to build quests from to create bigger accomplishments.
+//the trail repo is a collection of trails which serve as the basis for objectives, and to build quests from to create bigger accomplishments.
 
 trailName: {
     type: String,
     required: true
-}
+},
+imageRef:String,
 length: Number,
 elevation: Number,
 difficulty: Number,
 description: String,
-expVal: Number,
 trailHeadGPS: String,
 trailEndGPS: String,
 subArea: String,
 area: String,
 state: String,
 relatedQuests: [Quest id, Questid],
+relatedObjectives: [Objective id, Objective id]
 //comments are not in MVP scope
 comments:[{
     user: ObjectId,
@@ -92,14 +109,12 @@ comments:[{
 questName: {
     type: String,
     required: true
-}
-requirements: {
-    userLevel: Number,
-    trailsCompleted: Number,
-    },
-trails: [Trail Ref, Trail Ref, etc.]
+},
+imageRef:String,
+reqUserLevel:2,
+objectives: [Objective Ref, Objective Ref, etc.]
 description: String,
-category: {
+difficulty {
     type: String,
     enum:['Easy', 'Moderate', 'Difficult', 'Epic']
 }
