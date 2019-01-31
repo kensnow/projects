@@ -10,7 +10,7 @@ const questSchema = new mongoose.Schema({
         type: Number,
         default: 1
     },
-    objectives:[objectId],
+    objectives:[{type:objectId, ref:'Objective'}],
     description:{
         type: String,
         required:true
@@ -22,10 +22,8 @@ const questSchema = new mongoose.Schema({
     xpReward:{
         type:Number,
         required: true
-    },
-    subArea:[objectId],
-    area:[objectId],
-    state:[objectId]
+    }
+
 })
 
 

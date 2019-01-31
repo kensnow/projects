@@ -2,13 +2,25 @@ const mongoose = require('mongoose')
 const objectId = mongoose.Schema.Types.ObjectId
 
 const profileSchema = new mongoose.Schema({
+    email:{
+        type:String,
+        trim: true,
+        match: [/.+\@.+\..+/, 'Please fill a valid email address'],
+        required:true
+    },
     username:{
         type: String,
-        required: true
+        required: true,
+        trim: true,
     },
     psw: {
         type: String,
-        required: true
+        required: true,
+        minlength:6
+    },
+    profileImg:{
+        type: Buffer,
+        contentType:String
     },
     currentLevel: {
         type: Number,
@@ -19,21 +31,21 @@ const profileSchema = new mongoose.Schema({
         default:0
     },
     activeQuests:[{
-        quest: objectId,
+        quest: {type: objectId, ref:'Quest'},
         acceptedOn: {
             type: Date,
             default: Date.now
         }
     }],
     completedQuests:[{
-        quest: objectId,
+        quest: {type: objectId, ref:'Quest'},
         completedOn: {
             type: Date,
             default: Date.now
         }
     }],
     completedObjectives:[{
-        objective: objectId,
+        objective: {type: objectId, ref:'Objective'},
         completedOn: {
             type: Date,
             default: Date.now
