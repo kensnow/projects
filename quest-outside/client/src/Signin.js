@@ -26,7 +26,7 @@ class Signin extends Component {
         this.props.signIn(this.state.username)
         //send axios request to update
         alert('Successful login!');
-        this.props.history.push('/profile')
+        this.props.history.push('/dashboard')
         this.setState(initialState)
     }
     render() {

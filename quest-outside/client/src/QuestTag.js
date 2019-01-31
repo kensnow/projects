@@ -1,7 +1,7 @@
 import React from 'react'
 
 function QuestTag({questName, objectives, description, difficulty, expVal, subAreas, areas, states}) {
-    const objectiveGroup = objectives.map(obj => <li>{obj}</li>)
+    const objectiveGroup = objectives.map((obj, i )=> <li key={i}>{obj}</li>)
     return (
         <div className="questTag">
             <h3>{questName}</h3>

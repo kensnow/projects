@@ -6,8 +6,8 @@ import {Link, Route} from "react-router-dom"
 function Sidebar() {
     return (
         <div className="Sidebar">
-           <Link to="/profile/quests">Quests</Link>
-           <Link to="/profile/trails">Trails</Link>
+           <Link to="/dashboard/quests">Quests</Link>
+           <Link to="/dashboard/trails">Trails</Link>
         </div>
     )
 }

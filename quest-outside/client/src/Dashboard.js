@@ -5,14 +5,15 @@ import Sidebar from './Sidebar'
 import DashboardQuests from "./DashboardQuests"
 import DashboardTrails from "./DashboardTrails"
 import DashboardProfile from "./DashboardProfile"
+import DashboardObjectives from './DashboardObjectives';
+
 function Dashboard() {
     return (
         <div>
             <DashboardProfile />
             <DashboardQuests />
-            <DashboardTrails />
-            Dashboard Trails
-            Social Feed
+            <DashboardObjectives />
+
             <Sidebar/>
         </div>
     )
