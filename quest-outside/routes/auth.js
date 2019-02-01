@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 
 authRouter.post('/signup', (req, res, next) => {
     Profile.findOne({email: req.body.email}, (err,existingUser) => {
+
         if (err){
             res.status(500)
             return next(err)

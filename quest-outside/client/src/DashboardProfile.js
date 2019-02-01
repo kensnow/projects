@@ -2,6 +2,7 @@ import React from 'react'
 import {withProfileProvider} from "./dataProviders/ProfileProvider"
 
 function DashboardProfile(props) {
+    console.log(props)
     return (
         <div>
             <h4>{props.username}, level {props.level}</h4>

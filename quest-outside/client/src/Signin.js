@@ -9,9 +9,9 @@ class Signin extends Component {
     constructor(props){
         super(props);
         this.state = {
-            email:"",
-            password:"",
-            token:"",
+            // email:"",
+            // password:"",
+            // token:"",
             ...props
         }
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,6 +27,7 @@ class Signin extends Component {
     handleSubmit(e){
         e.preventDefault()
         console.log(this.props)
+        console.log(this.state)
         this.props.signIn(this.state)
             .then(() => this.props.history.push('/api/dashboard'))
             .catch((err) => this.props.history.push('/signin'))

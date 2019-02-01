@@ -27,10 +27,11 @@ export default class ProfileProvider extends Component {
         this.signIn = this.signIn.bind(this)
         this.logOut = this.logOut.bind(this)
         this.signUp = this.signUp.bind(this)
+     
     }
-    // state containing user data
+    // state  user data
     // methods for logging in, signing up, populating state from db, logging out, updating state & db upon completed quest
-    signIn(userDat){
+    signIn = (userDat) => {
         //axios request to login
         console.log(userDat)
         return axios.post("/auth/signin",{
@@ -38,12 +39,13 @@ export default class ProfileProvider extends Component {
         })
             .then(res => {     
                 console.log(res.data)
-                // const {user, token} = res.data
+                const {user, token} = res.data
                 this.setState({
-                    token: res.data.token,
+                    token,
                     password: "",
-                    user:res.data.user
+                    user
                 })
+                console.log(this.state)
                 return res  
                   
             })
@@ -56,19 +58,20 @@ export default class ProfileProvider extends Component {
     }
 
     signUp(userDat){
-        axios.post("/auth/signup",{
+        return axios.post("/auth/signup",{
             ...userDat
         })
             .then(res => {
-                const {email, token} = res.data
+                const {user, token} = res.data
                 this.setState({
-                    email,
                     token,
-                    password:""
+                    password: "",
+                    user
                 })   
                 return res
             })
             .catch(err => {
+                this.props.history.push('/signup')
                 return err
             })
       
@@ -80,21 +83,23 @@ export default class ProfileProvider extends Component {
     }
 
     render() {
-        
-        return (
-            this.props.children({
-                signIn: this.signIn,
-                signUp: this.signUp,
-                logOut: this.logOut,
-                ...this.state
+        const value = {
+            signIn: this.signIn,
+            signUp: this.signUp,
+            logOut: this.logOut,
+            ...this.state 
+        }
 
-            })
+        return (
+            <Provider value = {value} >
+               {this.props.children}
+            </Provider>
         )
     }
 }
 
 export const withProfileProvider = C => props => (
-    <ProfileProvider>
+    <Consumer>
         {containerProps => <C {...containerProps} {...props}/>}
-    </ProfileProvider>
+    </Consumer>
 )

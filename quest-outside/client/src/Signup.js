@@ -12,8 +12,8 @@ const initialState = {
 }
 
 class Signup extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = initialState
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -27,8 +27,9 @@ class Signup extends Component {
 
     handleSubmit(e){
         e.preventDefault()
+        console.log(this.props)
         //send axios request to update
-        this.props.Signup(this.state)
+        this.props.signUp(this.state)
             .then(() => this.props.history.push('/api/dashboard'))
 
     }
