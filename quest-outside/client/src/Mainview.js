@@ -15,9 +15,9 @@ function Mainview() {
             <Route path="/details" component={Details} />
             <Route path="/signup" component={Signup} />
             <Route path="/signin" component={Signin} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route path="/dashboard/quests" component={Quests} />
-            <Route path="/dashboard/trails" component={Trails} />
+            <Route exact path="/api/dashboard" component={Dashboard} />
+            <Route path="/api/dashboard/quests" component={Quests} />
+            <Route path="/api/dashboard/trails" component={Trails} />
         </div>
     )
 }

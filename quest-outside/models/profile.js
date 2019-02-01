@@ -6,6 +6,8 @@ const profileSchema = new mongoose.Schema({
         type:String,
         trim: true,
         match: [/.+\@.+\..+/, 'Please fill a valid email address'],
+        unique:true,
+        lowercase:true,
         required:true
     },
     username:{
@@ -13,7 +15,11 @@ const profileSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
-    psw: {
+    isAdmin:{
+        type:Boolean,
+        default:false
+    },
+    password: {
         type: String,
         required: true,
         minlength:6
@@ -50,7 +56,9 @@ const profileSchema = new mongoose.Schema({
             type: Date,
             default: Date.now
         }
-    }]
+    }],
+    state:String,
+    area:String
 
 })
 

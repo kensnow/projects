@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom"
+import axios from 'axios'
+import {withProfileProvider} from "./dataProviders/ProfileProvider"
 
 const initialState = {
+    email:"",
     username:"",
     password:"",
     state:"",
     area:""
 }
 
-export default class Signup extends Component {
+class Signup extends Component {
     constructor(){
         super();
         this.state = initialState
@@ -25,18 +28,21 @@ export default class Signup extends Component {
     handleSubmit(e){
         e.preventDefault()
         //send axios request to update
-        this.setState = initialState
+        this.props.Signup(this.state)
+            .then(() => this.props.history.push('/api/dashboard'))
+
     }
 
     render() {
-        const {username, password, state, area} = this.state
+        const {username, password, state, area, email} = this.state
         const link = `user/${username}`
         return (
             <div>
                 <h2>Sign up! Quest Outside</h2>
                 <form onSubmit={this.handleSubmit}>
                     <input onChange={this.handleChange} name="username" type="text" placeholder="Create Unique Username" value={username} />
-                    <input onChange={this.handleChange} name="password" type="text" placeholder="Create Password" value={password}/>
+                    <input onChange={this.handleChange} name="email" type="text" placeholder="Enter Email" value={email} />
+                    <input onChange={this.handleChange} name="password" type="text" placeholder="Create password" value={password}/>
 
                     <select onChange={this.handleChange}>
                         <option>Select State</option>
@@ -96,9 +102,11 @@ export default class Signup extends Component {
                         <option>Select Area...</option>
                         <option value="WasatchFront">Wasatch Front</option>
                     </select>
-                    <Link to={link}><button>Submit</button></Link>
+                    <button>Submit</button>
                 </form>
             </div>
         )
     }
 }
+
+export default withProfileProvider(Signup)
