@@ -13,14 +13,14 @@ app.use('/api/profile', require('./routes/profile'))
 
 app.use('/auth', require('./routes/auth'))
 
-app.use('/api/admin', (req,res,next) =>{
-    if(req.user.isAdmin){
-        next()
-    } else {
-        res.status(403)
-        next(Error('Unauthorized'))
-    }
-}, require('./routes/admin'))
+// app.use('/api/admin', (req,res,next) =>{
+//     if(req.user.isAdmin){
+//         next()
+//     } else {
+//         res.status(403)
+//         next(Error('Unauthorized'))
+//     }
+// }, require('./routes/admin'))
 
 app.use((err, req, res, next) => {
     console.log(err.name)
