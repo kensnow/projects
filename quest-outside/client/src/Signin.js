@@ -9,10 +9,10 @@ class Signin extends Component {
     constructor(props){
         super(props);
         this.state = {
-            // email:"",
-            // password:"",
+            email:"",
+            password:"",
             // token:"",
-            ...props
+            errMsg: "",
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -26,21 +26,20 @@ class Signin extends Component {
 
     handleSubmit(e){
         e.preventDefault()
-        console.log(this.props)
-        console.log(this.state)
         this.props.signIn(this.state)
-            .then(() => this.props.history.push('/api/dashboard'))
-            .catch((err) => this.props.history.push('/signin'))
-        //send axios request to update
-
+            .then(() => this.props.history.push('/dashboard'))
+            .catch((err) => this.setState({
+                errMsg: err.response.data
+        }))
     }
     render() {
-        const {email, password} = this.state
+        const {email, password, errMsg} = this.state
         return (
             <form onSubmit={this.handleSubmit}>
                 <input onChange={this.handleChange} name="email" type="text" placeholder="Enter email" value={email} />
                 <input onChange={this.handleChange} name="password" type="text" placeholder="Enter Password" value={password}/>
                 <button>Submit</button>
+                {errMsg && <p style={{color: "red"}}>{errMsg}</p>}
             </form>
         )
     }

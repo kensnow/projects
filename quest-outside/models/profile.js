@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const objectId = mongoose.Schema.Types.ObjectId
+const bcrypt = require('bcrypt')
 
 const profileSchema = new mongoose.Schema({
     email:{
@@ -61,5 +62,33 @@ const profileSchema = new mongoose.Schema({
     area:String
 
 })
+
+profileSchema.pre('save', function(next){
+    const user = this;
+    if(!user.isModified('password')) return next()
+    bcrypt.hash(user.password, 10, (err,hash) => {
+        if(err) return next (err)
+        user.password = hash;
+        next()
+    })
+})
+
+profileSchema.methods.checkPassword = function(passwordAttempt, callback){
+    bcrypt.compare(passwordAttempt, this.password, (err, isMatch) => {
+        if (err){
+            return callback(err)
+        } else {
+            callback(null,isMatch)
+        }
+    })
+}
+
+profileSchema.methods.withoutKeys = function(...keys){
+    const user = this.toObject()
+    keys.forEach(element => {
+        delete user[element]
+    });
+    return user
+}
 
 module.exports = mongoose.model('Profile', profileSchema)

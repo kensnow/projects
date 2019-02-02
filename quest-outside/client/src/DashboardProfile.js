@@ -2,14 +2,15 @@ import React from 'react'
 import {withProfileProvider} from "./dataProviders/ProfileProvider"
 
 function DashboardProfile(props) {
-    console.log(props)
+    console.log(props.user)
+    const {username,level, xp, activeQuests, completedQuests} = props.user
     return (
         <div>
-            <h4>{props.username}, level {props.level}</h4>
+            <h4>{username}, level {level}</h4>
             <ul>
-                <li>XP: {props.xp}</li>
-                <li>Active Quests: {props.activeQuests}</li>
-                <li>Completed Quests: {props.completedQuests}</li>
+                <li>XP: {xp}</li>
+                <li>Active Quests: {activeQuests}</li>
+                <li>Completed Quests: {completedQuests}</li>
             </ul>
         
             Suggested Quests: 

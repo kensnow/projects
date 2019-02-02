@@ -30,12 +30,12 @@ class Signup extends Component {
         console.log(this.props)
         //send axios request to update
         this.props.signUp(this.state)
-            .then(() => this.props.history.push('/api/dashboard'))
+            .then(() => this.props.history.push('/dashboard'))
 
     }
 
     render() {
-        const {username, password, state, area, email} = this.state
+        const {username, password, state, area, email, errMsg} = this.state
         const link = `user/${username}`
         return (
             <div>
@@ -103,6 +103,7 @@ class Signup extends Component {
                         <option>Select Area...</option>
                         <option value="WasatchFront">Wasatch Front</option>
                     </select>
+                    {errMsg && <p style={{color: "red"}}>{errMsg}</p>}
                     <button>Submit</button>
                 </form>
             </div>

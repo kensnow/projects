@@ -7,6 +7,8 @@ import Signin from "./Signin"
 import Dashboard from "./Dashboard"
 import Quests from "./Quests"
 import Trails from "./Trails"
+import ProtectedRoute from "./dataProviders/ProtectedRoute"
+import Admin from "./admin/Admin"
 
 function Mainview() {
     return (
@@ -15,9 +17,10 @@ function Mainview() {
             <Route path="/details" component={Details} />
             <Route path="/signup" component={Signup} />
             <Route path="/signin" component={Signin} />
-            <Route exact path="/api/dashboard" component={Dashboard} />
-            <Route path="/api/dashboard/quests" component={Quests} />
-            <Route path="/api/dashboard/trails" component={Trails} />
+            <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+            <ProtectedRoute path="/dashboard/quests" component={Quests} />
+            <ProtectedRoute path="/admin" component={Admin} />
+            {/* <Route path="/dashboard/trails" component={Trails} /> */}
         </div>
     )
 }

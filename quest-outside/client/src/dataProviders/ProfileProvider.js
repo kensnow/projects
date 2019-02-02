@@ -1,7 +1,14 @@
 import React, { Component, createContext } from 'react'
 import axios from 'axios'
 export const {Consumer, Provider} = createContext()
+const userAxios = axios.create()
 
+//add axios interceptor
+userAxios.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token')
+    config.headers.Authorization = `Bearer ${token}`
+    return config
+})
 // const initialState = {
 //     email: "",
 //     level:"",
@@ -21,8 +28,9 @@ export default class ProfileProvider extends Component {
         this.state = {
             email: "",
             password:"",
-            token:"",
-            user:{}
+            errMsg:"",
+            token:localStorage.getItem("token") || "",
+            user:JSON.parse(localStorage.getItem("user")) || {}
         }
         this.signIn = this.signIn.bind(this)
         this.logOut = this.logOut.bind(this)
@@ -30,35 +38,39 @@ export default class ProfileProvider extends Component {
      
     }
     // state  user data
-    // methods for logging in, signing up, populating state from db, logging out, updating state & db upon completed quest
-    signIn = (userDat) => {
+    // methods for logging in, signing up, populating state from db, logging out,   updating state & db upon completed quest
+
+    clearInputs = () => {
+        this.setState({
+            username:"",
+            password:"",
+            errMsg:""
+        })
+    }
+
+    signIn(userDat){
         //axios request to login
         console.log(userDat)
-        return axios.post("/auth/signin",{
+        return userAxios.post("/auth/signin",{
             ...userDat
         })
             .then(res => {     
-                console.log(res.data)
                 const {user, token} = res.data
+                localStorage.setItem("token", token)
+                localStorage.setItem("user", JSON.stringify(user))
                 this.setState({
                     token,
                     password: "",
                     user
                 })
-                console.log(this.state)
                 return res  
                   
             })
-            .catch(err => {
-                console.log("err is " + err)
-                //perhaps redirect to bad login page here?
-                this.props.history.push('/signin')
-                return (err)
-            })
     }
 
+
     signUp(userDat){
-        return axios.post("/auth/signup",{
+        return userAxios.post("/auth/signup",{
             ...userDat
         })
             .then(res => {
@@ -71,6 +83,7 @@ export default class ProfileProvider extends Component {
                 return res
             })
             .catch(err => {
+                this.setState({errMsg: err.response.data.message})
                 this.props.history.push('/signup')
                 return err
             })
@@ -78,7 +91,14 @@ export default class ProfileProvider extends Component {
     }
 
     logOut(){
-     
+        localStorage.removeItem("user")
+        localStorage.removeItem("token")
+        this.setState({
+            email: "",
+            password:"",
+            user:"",
+            token:""
+        })
         this.props.history.push('/')
     }
 
