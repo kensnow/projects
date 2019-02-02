@@ -1,32 +1,33 @@
 const express = require('express')
-const questRouter = express.Router()
-const Quest = require('../models/quest')
+const trailRouter = express.Router()
+const Trail = require('../models/trail')
 
-questRouter.route('/')
+trailRouter.route('/')
     .get((req, res, next) => {
-        Quest.find()
-            .then(questCollection => res.status(200).send(questCollection))
+        Trail.find()
+            .then(trailCollection => res.status(200).send(trailCollection))
             .catch(err => {
                 res.status(500);
                 next(err);
             })
     })
     .post((req, res, next) => {
-        const questData = req.body
-        const questDoc = new Quest(questData)
-        questDoc.save()
-            .then(savedQuestDoc => res.status(201).send(savedQuestDoc))
+        const trailData = req.body
+        const trailDoc = new Trail(trailData)
+        console.log(trailDoc)
+        trailDoc.save()
+            .then(savedTrailDoc => res.status(201).send(savedTrailDoc))
             .catch(err => {
                 res.status(500)
                 next(err)
             })
     })
 
-questRouter.route('/:id')
+trailRouter.route('/:id')
     .get((req, res, next) => {
         const id = req.params.id
-        Quest.findById(id)
-            .then(foundQuest => res.status(200).send(foundQuest))
+        Trail.findById(id)
+            .then(foundTrail => res.status(200).send(foundTrail))
             .catch(err => {
                 res.status(500)
                 next(err)
@@ -35,7 +36,7 @@ questRouter.route('/:id')
 
     .delete((req, res, next) => {
         const id = req.params.id
-        Quest.findByIdAndDelete(id)
+        Trail.findByIdAndDelete(id)
             .then(() => res.status(204).send())
             .catch(err => {
                 res.status(500)
@@ -46,8 +47,8 @@ questRouter.route('/:id')
     .put((req, res, next) => {
         const id = req.params.id
         const updates = req.body
-        Quest.findByIdAndUpdate(id, updates, {new:true})
-            .then(updatedQuest => res.status(200).send(updatedQuest))
+        Trail.findByIdAndUpdate(id, updates, {new:true})
+            .then(updatedTrail => res.status(200).send(updatedTrail))
             .catch(err => {
                 res.status(500)
                 next(err)
@@ -55,4 +56,4 @@ questRouter.route('/:id')
 
     })
 
-    module.exports = questRouter
+    module.exports = trailRouter

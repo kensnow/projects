@@ -9,13 +9,13 @@ const trailSchema = new mongoose.Schema({
     imgRef:{
         data: Buffer,
     },
-    relatedObjectives:[{type:objectId, ref:'Objective'}],
-    relatedQuests:[{type:objectId, ref:'Quest'}],
+    relatedObjectives:[{type:objectId, ref:'Objectives'}],
+    relatedQuests:[{type:objectId, ref:'Quests'}],
     distance:Number,
     elevationGain:Number,
     description: String,
     trailHeadGPS:String,
-    trailEndGPS:String,
+    trailEndGPS:String
 
 
 })

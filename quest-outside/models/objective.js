@@ -9,8 +9,8 @@ const objectiveSchema = new mongoose.Schema({
     imgRef:{
         data: Buffer,
     },
-    trails:[{type:objectId, ref:'Trail'}],
-    relatedQuests:[{type:objectId, ref:'Quest'}],
+    trails:[{type:objectId, ref:'Trails'}],
+    relatedQuests:[{type:objectId, ref:'Quests'}],
     elevation:Number,
     xpReward:{
         type:Number,

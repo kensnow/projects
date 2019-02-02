@@ -12,7 +12,9 @@ app.use('/api', expressJwt({secret: process.env.SECRET}))
 app.use('/api/profile', require('./routes/profile'))
 
 app.use('/auth', require('./routes/auth'))
-
+app.use('/admin/quest', require('./routes/admin_quest'))
+app.use('/admin/objective', require('./routes/admin_objective'))
+app.use('/admin/trail', require('./routes/admin_trail'))
 // app.use('/api/admin', (req,res,next) =>{
 //     if(req.user.isAdmin){
 //         next()

@@ -8,8 +8,8 @@ export default class Trail extends Component {
         this.state = {
             name:"",
             imgRef:"",
-            relatedObjectives:"",
-            relatedQuests:"",
+            relatedObjectives:[],
+            relatedQuests:[],
             distance:0,
             elevationGain:0,
             description:"",
@@ -28,20 +28,29 @@ export default class Trail extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        axios.post("/admin/objective")//todo axios req
+        console.log(this.state)
+        axios.post("/admin/trail", {
+            ...this.state
+        })
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
         return (
             <div className="admin-panel">
                 <h3>Trail Creation Tool</h3>
-                <form>
-                    <input type="text" name="name" placeholder="Enter trail name here" />
-                    <input type="number" name="distance" placeholder="Enter Distance here" />
-                    <input type="number" name="elevationGain" placeholder="enter elevation gain here"/>
-                    <input type="text" name="description" placeholder="Enter decription here" />
-                    <input type="text" name="trailHeadGPS" placeholder="Enter trail head GPS here"/>
-                    <input type="text" name="trailEndGPS" placeholder="Enter Trail end GPS here"/>
+                <form onSubmit={this.handleSubmit}>
+                    <input onChange={this.handleChange} type="text" name="name" placeholder="Enter trail name here" />
+                    <input onChange={this.handleChange} type="number" name="distance" placeholder="Enter Distance here" />
+                    <input onChange={this.handleChange} type="number" name="elevationGain" placeholder="enter elevation gain here"/>
+                    <textarea onChange={this.handleChange} name="description" cols="40" rows="5" placeholder="Enter description"></textarea>
+                    <input onChange={this.handleChange} type="text" name="trailHeadGPS" placeholder="Enter trail head GPS here"/>
+                    <input onChange={this.handleChange} type="text" name="trailEndGPS" placeholder="Enter Trail end GPS here"/>
                     <button>Submit</button>
                 </form>
             </div>

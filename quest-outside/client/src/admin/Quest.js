@@ -27,19 +27,27 @@ export default class Quest extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        axios.post("/admin/objective")//todo axios req
+        axios.post("/admin/quest", {
+            ...this.state
+        })
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
         return (
             <div className="admin-panel">
                 <h3>Quest Creation Tool</h3>
-                <form>
-                    <input type="text" name="name" placeholder="Enter quest name here" />
-                    <input type="number" name="reqLevel" placeholder="Required Level" />
-                    <input className="description-box" type="text" name="description" placeholder="Quest description here" />
-                    <input type="text" name="difficulty" placeholder="Enter difficulty here" />
-                    <input type="number" name="xpReward" placeholder="Enter XP reward here" />
+                <form onSubmit={this.handleSubmit}>
+                    <input onChange={this.handleChange} type="text" name="name" placeholder="Enter quest name here" />
+                    <input onChange={this.handleChange} type="number" name="reqLevel" placeholder="Required Level" />
+                    <textarea onChange={this.handleChange} name="description" cols="40" rows="5" placeholder="Enter description"></textarea>
+                    <input onChange={this.handleChange} type="text" name="difficulty" placeholder="Enter difficulty here" />
+                    <input onChange={this.handleChange} type="number" name="xpReward" placeholder="Enter XP reward here" />
                     <button>Submit</button>
                 </form>
             </div>

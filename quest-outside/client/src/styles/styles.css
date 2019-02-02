@@ -1,0 +1,83 @@
+* {
+    margin:0;
+    text-decoration: none;
+    font-family: 'Hind Madurai', sans-serif;
+}
+
+body{
+    max-width: 700px;
+    margin: auto auto;
+}
+a:visited{
+    color:inherit;
+    text-decoration: none;
+}
+
+a{
+    text-decoration-line: underline;
+}
+
+header{
+    position: relative;
+    grid-column: 1/4;
+    font-size: 1.5em;
+    background: rgba(20,20,20, .2)
+
+
+}
+
+.admin-page-container{
+    height:100%;
+    background: red;
+
+}
+
+.admin-page-container > a {
+    padding: 20px;
+    margin: 20px;
+
+}
+
+.admin-panel > form{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-panel > input{
+    display:block;
+}
+
+
+
+.app-view{
+    display:grid;
+    grid-template: 15vh auto 15vh / 15vw auto 15vw;
+}
+
+.signin-link{
+    text-decoration: none;
+    padding: 20px;
+}
+
+.landing-link{
+    display: inline-block;
+}
+.logo{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.main{
+    height:80vh;
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.header-button{
+    right: 0px;
+    top: 0;
+    position: absolute;
+}

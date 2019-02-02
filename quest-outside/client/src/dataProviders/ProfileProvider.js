@@ -9,18 +9,6 @@ userAxios.interceptors.request.use((config) => {
     config.headers.Authorization = `Bearer ${token}`
     return config
 })
-// const initialState = {
-//     email: "",
-//     level:"",
-//     xp:"",
-//     activeTrails:[],
-//     activeQuests:[],
-//     completedTrails:[],
-//     completedQuests:[]
-// }
-
-//fake data
-
 
 export default class ProfileProvider extends Component {
     constructor(){

@@ -26,18 +26,26 @@ export default class Objective extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        axios.post("/admin/objective")//todo axios req
+        axios.post("/admin/objective", {
+            ...this.state
+        })
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
     render() {
         return (
             <div className="admin-panel">
                 <h3>Objective Creation Tool</h3>
-                <form>
-                    <input type="text" name="name" placeholder="Enter Objective Name" />
-                    <input type="number" name="elevation" placeholder="Enter Max Elevation (ft)" />
-                    <input type="number" name="xpReward" placeholder="Enter XP Reward" />
-                    <input className="description-box" type="text" name="description" placeholder="Description" />
-                    <input type="text" name="gps" placeholder="enter GPS coordinates" />
+                <form onSubmit={this.handleSubmit}>
+                    <input onChange={this.handleChange} type="text" name="name" placeholder="Enter Objective Name" />
+                    <input onChange={this.handleChange} type="number" name="elevation" placeholder="Enter Max Elevation (ft)" />
+                    <input onChange={this.handleChange} type="number" name="xpReward" placeholder="Enter XP Reward" />
+                    <textarea onChange={this.handleChange} name="description" cols="40" rows="5" placeholder="Enter description"></textarea>
+                    <input onChange={this.handleChange} type="text" name="gps" placeholder="enter GPS coordinates" />
                     <button>Submit</button>
                 </form>
             </div>

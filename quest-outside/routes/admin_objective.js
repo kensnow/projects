@@ -1,32 +1,32 @@
 const express = require('express')
-const questRouter = express.Router()
-const Quest = require('../models/quest')
+const objectiveRouter = express.Router()
+const Objective = require('../models/objective')
 
-questRouter.route('/')
+objectiveRouter.route('/')
     .get((req, res, next) => {
-        Quest.find()
-            .then(questCollection => res.status(200).send(questCollection))
+        Objective.find()
+            .then(objectiveCollection => res.status(200).send(objectiveCollection))
             .catch(err => {
                 res.status(500);
                 next(err);
             })
     })
     .post((req, res, next) => {
-        const questData = req.body
-        const questDoc = new Quest(questData)
-        questDoc.save()
-            .then(savedQuestDoc => res.status(201).send(savedQuestDoc))
+        const objectiveData = req.body
+        const objectiveDoc = new Objective(objectiveData) //turn post request into new objective object
+        objectiveDoc.save()
+            .then(savedObjectiveDoc => res.status(201).send(savedObjectiveDoc))
             .catch(err => {
                 res.status(500)
                 next(err)
             })
     })
 
-questRouter.route('/:id')
+objectiveRouter.route('/:id')
     .get((req, res, next) => {
         const id = req.params.id
-        Quest.findById(id)
-            .then(foundQuest => res.status(200).send(foundQuest))
+        Objective.findById(id)
+            .then(foundobjective => res.status(200).send(foundobjective))
             .catch(err => {
                 res.status(500)
                 next(err)
@@ -35,7 +35,7 @@ questRouter.route('/:id')
 
     .delete((req, res, next) => {
         const id = req.params.id
-        Quest.findByIdAndDelete(id)
+        Objective.findByIdAndDelete(id)
             .then(() => res.status(204).send())
             .catch(err => {
                 res.status(500)
@@ -46,8 +46,8 @@ questRouter.route('/:id')
     .put((req, res, next) => {
         const id = req.params.id
         const updates = req.body
-        Quest.findByIdAndUpdate(id, updates, {new:true})
-            .then(updatedQuest => res.status(200).send(updatedQuest))
+        Objective.findByIdAndUpdate(id, updates, {new:true})
+            .then(updatedobjective => res.status(200).send(updatedobjective))
             .catch(err => {
                 res.status(500)
                 next(err)
@@ -55,4 +55,4 @@ questRouter.route('/:id')
 
     })
 
-    module.exports = questRouter
+    module.exports = objectiveRouter

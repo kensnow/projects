@@ -11,7 +11,7 @@ function Admin() {
             <Link to="/admin/objective">Objective</Link>
             <Link to="/admin/quest">Quest</Link>
             <Link to="/admin/trail">Trail</Link>
-            This is the admin page!!
+
             <Route path="/admin/objective" component={Objective} /> 
             <Route path="/admin/quest" component={Quest} />
             <Route path="/admin/trail" component={Trail} />
