@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import {withDataProvider} from "./DataProvider"
 
-
-export default class Quest extends Component {
-    constructor() {
-        super();
+class Quest extends Component {
+    constructor(props) {
+        super(props);
         this.state = {
             name: "",
             reqLevel: 0,
@@ -12,10 +12,11 @@ export default class Quest extends Component {
             description: "",
             difficulty: "",
             xpReward: "",
-
+            trails:[]
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handleCheckbox = this.handleCheckbox.bind(this)
     }
 
 
@@ -25,8 +26,18 @@ export default class Quest extends Component {
         })
     }
 
+
+    handleCheckbox({ target: { name, value } }) {
+        console.log("before:" + JSON.stringify(this.state))
+        this.setState(ps => ({
+            trails: [...ps.trails, name]
+        }))
+        console.log("after:" + JSON.stringify(this.state))
+    }
+
     handleSubmit(e) {
         e.preventDefault()
+        console.log(this.state)
         axios.post("/admin/quest", {
             ...this.state
         })
@@ -39,18 +50,26 @@ export default class Quest extends Component {
     }
 
     render() {
+        const checkboxArr = this.props.trails.map((trail, i) => {
+        
+            return (<span key={trail._id}><input onChange={this.handleCheckbox} key={trail._id} name={trail._id} value="false" type="checkbox" id={trail._id} />{trail.name} - {trail.location}</span>)
+        })
+
         return (
             <div className="admin-panel">
                 <h3>Quest Creation Tool</h3>
-                <form onSubmit={this.handleSubmit}>
+                <form className="quest-form form" onSubmit={this.handleSubmit}>
                     <input onChange={this.handleChange} type="text" name="name" placeholder="Enter quest name here" />
                     <input onChange={this.handleChange} type="number" name="reqLevel" placeholder="Required Level" />
                     <textarea onChange={this.handleChange} name="description" cols="40" rows="5" placeholder="Enter description"></textarea>
                     <input onChange={this.handleChange} type="text" name="difficulty" placeholder="Enter difficulty here" />
                     <input onChange={this.handleChange} type="number" name="xpReward" placeholder="Enter XP reward here" />
                     <button>Submit</button>
+                    {checkboxArr}
                 </form>
             </div>
         )
     }
 }
+
+export default withDataProvider(Quest)

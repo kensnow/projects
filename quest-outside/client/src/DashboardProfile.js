@@ -3,10 +3,10 @@ import {withProfileProvider} from "./dataProviders/ProfileProvider"
 
 function DashboardProfile(props) {
     console.log(props.user)
-    const {username,level, xp, activeQuests, completedQuests} = props.user
+    const {username,currentLevel, xp, activeQuests, completedQuests} = props.user
     return (
         <div>
-            <h4>{username}, level {level}</h4>
+            <h4>{username}, level {currentLevel}</h4>
             <ul>
                 <li>XP: {xp}</li>
                 <li>Active Quests: {activeQuests}</li>

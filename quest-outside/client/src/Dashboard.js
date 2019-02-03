@@ -2,7 +2,7 @@ import React from 'react'
 //import data from data providers
 import Sidebar from './Sidebar'
 import {withProfileProvider} from "./dataProviders/ProfileProvider"
-
+import {withQuestProvider} from "./dataProviders/QuestProvider"
 import DashboardQuests from "./DashboardQuests"
 import DashboardTrails from "./DashboardTrails"
 import DashboardProfile from "./DashboardProfile"
@@ -21,4 +21,6 @@ function Dashboard(props) {
     )
 }
 
-export default withProfileProvider(Dashboard)
+export default withQuestProvider(Dashboard)
+
+// export default withProfileProvider(withQuestProvider(Dashboard))

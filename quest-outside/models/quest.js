@@ -10,7 +10,7 @@ const questSchema = new mongoose.Schema({
         type: Number,
         default: 1
     },
-    objectives:[{type:objectId, ref:'Objectives'}],
+    trails:[{type:objectId, ref:'trails'}],
     description:{
         type: String,
         required:true

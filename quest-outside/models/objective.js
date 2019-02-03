@@ -6,8 +6,8 @@ const objectiveSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    imgRef:{
-        data: Buffer,
+    imgLink:{
+        type:String
     },
     trails:[{type:objectId, ref:'Trails'}],
     relatedQuests:[{type:objectId, ref:'Quests'}],

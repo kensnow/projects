@@ -1,42 +1,49 @@
-import React, { Component } from 'react'
+import React, { Component, createContext } from 'react'
+import axios from 'axios';
 
-const initialState = {
-    quests:[{
-        questName: "SLC Mountaineer",
-        reqUserLevel: 2,
-        objectives: ["Grandeur Peak", "Mt. Olympus", "Twin Mountains", "Lone Peak"],
-        description:"Summit the biggest peaks Wasatch peaks dominating the Salt Lake valley horizon",
-        difficulty: "Difficult",
-        expVal: 100,
-        subAreas: "SLC",
-        areas:"Wasatch Front",
-        states:"UT"
-
-    }]
-}
+export const {Consumer, Provider} = createContext()
 
 export default class QuestProvider extends Component {
     constructor(){
         super();
-        this.state = initialState
+        this.state = {
+            quests:[]
+        }
+        console.log(this.state)
+        this.getQuests = this.getQuests.bind(this)
     }
 
     getQuests(){
-        //axios get request for quests
+        return axios.get('/profile/quests')
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    quests: [res.data]
+                })
+                return res
+            })
+
+            console.log(this.state)
+            
+    }
+
+    componentDidMount(){
+        this.getQuests()
     }
 
     render() {
-        const {quests} = this.state
+        
+        const {value} = this.state.value
         return (
-            this.props.children({
-                quests
-            })
+            <Provider value={value}>
+                {this.props.children}
+            </Provider>
         )
     }
 }
 
 export const withQuestProvider = C => props => (
-    <QuestProvider>
+    <Consumer>
         {containerProps => <C {...containerProps}{...props} />}
-    </QuestProvider>
+    </Consumer>
 )

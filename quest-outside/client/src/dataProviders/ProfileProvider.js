@@ -23,6 +23,7 @@ export default class ProfileProvider extends Component {
         this.signIn = this.signIn.bind(this)
         this.logOut = this.logOut.bind(this)
         this.signUp = this.signUp.bind(this)
+        this.acceptQuest = this.acceptQuest.bind(this)
      
     }
     // state  user data
@@ -56,6 +57,21 @@ export default class ProfileProvider extends Component {
             })
     }
 
+    acceptQuest(userId, trailId){
+        console.log(userId, trailId)
+        return userAxios.put("/profile/quests",{
+            user: userId,
+            quest: trailId,
+
+        })
+            .then( res => {
+                return res
+            })
+            .catch(err => {
+                return err
+            })
+
+    }
 
     signUp(userDat){
         return userAxios.post("/auth/signup",{
@@ -95,6 +111,7 @@ export default class ProfileProvider extends Component {
             signIn: this.signIn,
             signUp: this.signUp,
             logOut: this.logOut,
+            acceptQuest: this.acceptQuest,
             ...this.state 
         }
 

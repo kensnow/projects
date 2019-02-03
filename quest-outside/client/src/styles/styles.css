@@ -42,11 +42,13 @@ header{
     padding: 40px;
     display: flex;
     flex-direction: column;
+    
 }
 
 .admin-panel > input{
     display:block;
 }
+
 
 
 

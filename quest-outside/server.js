@@ -10,6 +10,8 @@ app.use(express.json())
 
 app.use('/api', expressJwt({secret: process.env.SECRET}))
 app.use('/api/profile', require('./routes/profile'))
+app.use('/profile/quests', require('./routes/quest'))
+
 
 app.use('/auth', require('./routes/auth'))
 app.use('/admin/quest', require('./routes/admin_quest'))
