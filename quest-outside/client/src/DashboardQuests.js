@@ -2,7 +2,7 @@ import React from 'react'
 import Quests from './Quests'
 
 
-function DashboardQuests() {
+function DashboardQuests(props) {
 
     return (
         <div>

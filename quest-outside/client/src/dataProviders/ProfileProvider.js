@@ -44,6 +44,7 @@ export default class ProfileProvider extends Component {
             ...userDat
         })
             .then(res => {     
+   
                 const {user, token} = res.data
                 localStorage.setItem("token", token)
                 localStorage.setItem("user", JSON.stringify(user))
@@ -58,13 +59,17 @@ export default class ProfileProvider extends Component {
     }
 
     acceptQuest(userId, trailId){
-        console.log(userId, trailId)
+
         return userAxios.put("/profile/quests",{
             user: userId,
             quest: trailId,
 
         })
             .then( res => {
+                const profile = res.data
+                this.setState( {
+                    ...profile
+                })
                 return res
             })
             .catch(err => {

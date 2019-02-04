@@ -20,6 +20,7 @@ questRouter.route('/')
         const quest = req.body.quest
         console.log("user: " + user)
         console.log("quest: " + quest)
+        // Profile.findById(user)
         Profile.findByIdAndUpdate(user,  {$push: {activeQuests:[{quest}]}}, {new:true})
             .then(updatedProfile => res.status(200).send(updatedProfile))
             .catch(err => {

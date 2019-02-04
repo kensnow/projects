@@ -28,9 +28,12 @@ class Signin extends Component {
         e.preventDefault()
         this.props.signIn(this.state)
             .then(() => this.props.history.push('/dashboard'))
-            .catch((err) => this.setState({
-                errMsg: err.response.data
-        }))
+            .catch((err) => {
+                console.log(err)
+                this.setState({
+                    errMsg: err.response.data
+            })
+        })
     }
     render() {
         const {email, password, errMsg} = this.state

@@ -8,7 +8,8 @@ export default class DataProvider extends Component {
         this.state = {
             trails:[],
             objectives:[],
-            quests:[]
+            quests:[],
+            loading: true
         }
 
         this.getTrailData = this.getTrailData.bind(this)
@@ -20,7 +21,8 @@ export default class DataProvider extends Component {
         return axios.get("/admin/trail")
             .then(res => {
                 this.setState({
-                    trails:res.data
+                    trails:res.data,
+                    loading:false
                 })
             })
     }
@@ -40,14 +42,18 @@ export default class DataProvider extends Component {
         .then(res => {
             this.setState({
                 quests: res.data
+                
             })
         })
+        
     }
 
     componentDidMount(){
-        this.getTrailData()
+
         this.getObjectiveData()
         this.getQuestData()
+        this.getTrailData()
+   
     }
     render() {
         const value = {
