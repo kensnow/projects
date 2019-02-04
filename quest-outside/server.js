@@ -9,8 +9,9 @@ app.use(express.json())
 //dashboard endpoint when user logs in
 
 app.use('/api', expressJwt({secret: process.env.SECRET}))
+app.use('/api/profile/quests', require('./routes/quest'))
 app.use('/api/profile', require('./routes/profile'))
-app.use('/profile/quests', require('./routes/quest'))
+
 
 
 app.use('/auth', require('./routes/auth'))

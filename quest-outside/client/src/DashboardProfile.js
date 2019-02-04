@@ -1,7 +1,7 @@
 import React from 'react'
 import {withProfileProvider} from "./dataProviders/ProfileProvider"
 import {withDataProvider} from "./admin/DataProvider"
-import QuestTag from "./QuestTag"
+import QuestLink from "./QuestLink"
 
 function DashboardProfile(props) {
     console.log(props)
@@ -17,7 +17,7 @@ function DashboardProfile(props) {
             tag:foundQuest
         }
         console.log(questDisplay)
-        return <QuestTag key={i} {...questDisplay}/>
+        return <QuestLink key={i} {...questDisplay}/>
     })
 
     console.log(questLinks)

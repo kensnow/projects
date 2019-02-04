@@ -3,8 +3,6 @@ import {Link} from "react-router-dom"
 import {withProfileProvider} from "./dataProviders/ProfileProvider"
 
 
-
-
 class Signin extends Component {
     constructor(props){
         super(props);
