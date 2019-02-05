@@ -3,6 +3,7 @@ import QuestTag from "./QuestTag"
 
 
 function DashboardQuests(props) {
+
     const questGroup = props.quests.filter((quest, i)=> {
         return (quest.reqLevel <= props.user.currentLevel)
     })
@@ -11,13 +12,11 @@ function DashboardQuests(props) {
         const foundQuest = props.user.activeQuests.find(activeQuests => {
             return (activeQuests.quest === availQuest._id)
         })
-        if(!foundQuest){
-            filteredQuests.push(<QuestTag key={i} tag={availQuest} user={props.user}/>)
+        if(!foundQuest && filteredQuests.length < 2){
+            filteredQuests.push(<QuestTag key={i} tag={availQuest} user={props.user} quests={props.quests}/>)
         }
-       
-        console.log(foundQuest)
     })
-    console.log(filteredQuests)
+
     return (
         <div className="dashboard-quest-container">
              {filteredQuests.length === 0  ? <p>There are currently no available quests, complete active quests to gain XP and gain access to more!</p> : filteredQuests}

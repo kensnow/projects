@@ -24,6 +24,7 @@ export default class ProfileProvider extends Component {
         this.logOut = this.logOut.bind(this)
         this.signUp = this.signUp.bind(this)
         this.acceptQuest = this.acceptQuest.bind(this)
+        this.completeQuest = this.completeQuest.bind(this)
      
     }
     // state  user data
@@ -58,17 +59,18 @@ export default class ProfileProvider extends Component {
             })
     }
 
-    acceptQuest(userId, trailId){
+    acceptQuest(userId, questId){
 
-        return userAxios.put("/profile/quests",{
+        return userAxios.put("/api/profile/quests",{
             user: userId,
-            quest: trailId,
+            quest: questId,
+            action: "accept"
 
         })
             .then( res => {
                 const profile = res.data
                 this.setState( {
-                    ...profile
+                    user:profile
                 })
                 return res
             })
@@ -77,6 +79,34 @@ export default class ProfileProvider extends Component {
             })
 
     }
+
+    completeQuest(userId, questId, subDocId){
+
+        return userAxios.put("/api/profile/quests",{
+            user: userId,
+            quest: questId,
+            action: "complete",
+            subDocId: subDocId
+    
+        })
+            .then( res => {
+                const profile = res.data
+                this.setState( {
+                    user:profile
+                })
+                return res
+            })
+            .catch(err => {
+                return err
+            })
+
+    }
+
+
+
+
+
+
 
     signUp(userDat){
         return userAxios.post("/auth/signup",{
@@ -117,6 +147,7 @@ export default class ProfileProvider extends Component {
             signUp: this.signUp,
             logOut: this.logOut,
             acceptQuest: this.acceptQuest,
+            completeQuest: this.completeQuest,
             ...this.state 
         }
 

@@ -3,6 +3,7 @@ import axios from 'axios'
 import {Link} from "react-router-dom"
 
 function QuestLink(props) {
+    console.log (props)
     const {name, trails, description, difficulty, xpReward, reqLevel} = props.tag
     // const [trailRefs] = props.trails
     // console.log("user:" + props.user._id)
@@ -10,7 +11,7 @@ function QuestLink(props) {
     
     return (
         <div className="questTag">
-            <Link to="/profile/quests/">{name}</Link>
+            <Link to={{pathname:"/dashboard/quest-info/"+props.tag._id}} >{name}</Link>
         </div>
     )
 }

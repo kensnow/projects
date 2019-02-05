@@ -9,7 +9,9 @@ import DashboardProfile from "./DashboardProfile"
 import DashboardObjectives from './DashboardObjectives';
 import Loading from "./Loading"
 import ErrorMsg from "./Error"
-
+import ProtectedRoute from "./dataProviders/ProtectedRoute"
+import {Route} from "react-router-dom"
+import QuestContainer from "./QuestContainer"
 
 function Dashboard(props) {
     console.log(props)
@@ -19,10 +21,10 @@ function Dashboard(props) {
                 <ErrorMsg errMsg={props.errorMsg}>
                     <DashboardProfile {...props}/>
                     <DashboardQuests {...props}/>
-                    <Sidebar {...props}/>
+                    <Sidebar/>
+ 
                 </ErrorMsg>
             </Loading>
-            
         </div>
     )
 }

@@ -37,6 +37,10 @@ const profileSchema = new mongoose.Schema({
         type: Number,
         default:0
     },
+    nextLevel:{
+        type: Number,
+        default:50
+    },
     activeQuests:[{
         quest: {type: objectId, ref:'Quest'},
         acceptedOn: {

@@ -2,7 +2,7 @@ import React from 'react'
 import QuestTag from "./QuestTag"
 
 
-function Quests(props) {
+function UserQuests(props) {
     console.log(props)
 
     const questArr = props.user.activeQuests.map((activeQ, i) => {
@@ -23,4 +23,4 @@ function Quests(props) {
     )
 }
 
-export default Quests
+export default UserQuests

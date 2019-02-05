@@ -1,12 +1,17 @@
 import React from 'react'
 import axios from 'axios'
 import {withProfileProvider} from "./dataProviders/ProfileProvider"
+import {Link, Route} from "react-router-dom"
+
 
 function QuestTag(props) {
+    console.log(props)
     const {name, trails, description, difficulty, xpReward, reqLevel} = props.tag
     // const [trailRefs] = props.trails
-    console.log(props.tag._id)
-    // console.log("quest:" + props.tag._id) //why the fuck doesnt this work???
+    const foundQuest = props.user.activeQuests.find( activeQuest => {
+        return (activeQuest.quest === props.tag._id)
+    })
+    
     
     return (
         <div className="questTag">
@@ -15,10 +20,11 @@ function QuestTag(props) {
             <h5>Required Level: {reqLevel}</h5>
             <h5>XP: {xpReward}</h5>
             <p>{description}</p>
-            <ul>
+            <Link to={{pathname:"/dashboard/quest-info/"+props.tag._id}}>More Info</Link>
+           
+            {foundQuest ? <button onClick={() => props.completeQuest(props.user._id, props.tag._id, foundQuest._id)}>Complete Quest</button>  : <button onClick={() => props.acceptQuest(props.user._id, props.tag._id)}>Accept Quest</button> }
 
-            </ul>
-            <button onClick={() => props.acceptQuest(props.user._id, props.tag._id)}>Accept Quest</button>
+            
             
         </div>
     )

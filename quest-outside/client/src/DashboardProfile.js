@@ -4,9 +4,9 @@ import {withDataProvider} from "./admin/DataProvider"
 import QuestLink from "./QuestLink"
 
 function DashboardProfile(props) {
-    console.log(props)
-    const {username,currentLevel, xp, activeQuests, completedQuests} = props.user
     
+    const {username,currentLevel, xp, activeQuests, completedQuests} = props.user
+    console.log(props)
 
     const questLinks = activeQuests.map(( userQuest, i) => {
         const foundQuest = props.quests.find(q => {
@@ -17,7 +17,7 @@ function DashboardProfile(props) {
             tag:foundQuest
         }
         console.log(questDisplay)
-        return <QuestLink key={i} {...questDisplay}/>
+        return <QuestLink key={i} {...questDisplay} />
     })
 
     console.log(questLinks)
@@ -28,7 +28,7 @@ function DashboardProfile(props) {
             <ul>
                 <li>XP: {xp}</li>
                 <li>Active Quests: {questLinks}</li>
-                <li>Completed Quests: {completedQuests}</li>
+                {/* <li>Completed Quests: {completedQuests}</li> */}
             </ul>
         
             Suggested Quests: 
