@@ -95,12 +95,14 @@ export default class ProfileProvider extends Component {
                 this.setState( {
                     user:profile
                 })
+                
                 return res
             })
             .catch(err => {
                 return err
             })
-
+        
+            
     }
 
 

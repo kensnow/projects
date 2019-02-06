@@ -26,7 +26,7 @@ function QuestInfo(props) {
     return (
         <div >
             <DashboardProfile {...props}/>
-            <div className="quest-info-container">
+            <div className="quest-info-container card">
                 <h2>{name}</h2>
                 <h4 className={"difficulty-"+difficulty}>{difficulty}</h4>
                 <h5>XP: {xpReward}</h5>

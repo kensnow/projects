@@ -18,7 +18,7 @@ function DashboardQuests(props) {
     })
 
     return (
-        <div className="dashboard-quest-container">
+        <div className="dashboard-quest-container card">
              {filteredQuests.length === 0  ? <p>There are currently no available quests, complete active quests to gain XP and gain access to more!</p> : filteredQuests}
         </div>
     )

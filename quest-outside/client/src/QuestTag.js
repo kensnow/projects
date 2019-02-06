@@ -14,7 +14,7 @@ function QuestTag(props) {
     
     
     return (
-        <div>
+        <div className="quest-tag-container">
             <h3 >{name}</h3>
             <h5>Difficulty: <span className={"difficulty-"+difficulty}>{difficulty}</span></h5>
             <h5>Required Level: {reqLevel}</h5>

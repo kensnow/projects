@@ -9,7 +9,7 @@ function TrailList(props) {
         return(<Link className="trail-link" key={i}to={{pathname:"/dashboard/trail-info/"+trail._id}}>{trail.name}</Link>)
     })
     return (
-        <div>
+        <div className="card">
             {trailArr}
         </div>
     )

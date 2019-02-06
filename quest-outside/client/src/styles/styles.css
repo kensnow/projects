@@ -17,9 +17,19 @@ body{
     
 
 }
+.app-view{
+    overflow: scroll;
+}
+.main{
+    min-width: 300px;
+}
 a:visited{
     color:inherit;
     text-decoration: none;
+}
+a:hover{
+    color:rgb(226, 126, 12);
+    transition: .4s;
 }
 ul{
     padding:0;
@@ -47,7 +57,7 @@ input {
     
 }
 
-button{
+button, .button1{
     display:inline-block;
     padding:0.35em 1.2em;
     border:2px solid rgba(20, 20, 20, .8);
@@ -62,11 +72,11 @@ button{
     transition: all 0.2s;
 }
 
-button:hover{
+button,.button1:hover{
     color:#000000;
-    background-color:#FFFFFF;
-    border:2px solid rgba(24, 38, 163, 0.8);
+    border:2px solid rgb(226, 126, 12);
 }
+
 
     
 #root{
@@ -138,6 +148,9 @@ button:hover{
     text-decoration: none;
 
 }
+.landing-page-container{
+    margin: auto auto;
+}
 .signIn-form{
     position: absolute;
     top:50%;
@@ -147,6 +160,8 @@ button:hover{
 .main{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
     grid-column: 2/3;
 
     /* justify-content: center; */
@@ -206,12 +221,13 @@ button:hover{
 
 }
 
-.trail-card{
+.card{
     border: 2px solid rgba(20, 20, 20, .9);
     border-radius: 4px;
-    background: rgba(241, 241, 241, 0.609);
-    padding: 25px;
+    background: rgba(241, 241, 241, 0.3);
+    padding: 15px 15px;
     margin: 20px 0;
+    box-shadow: 5px 5px 3px rgba(73, 68, 68, .4);
 }
 
 .trail-info-pic{
@@ -224,16 +240,6 @@ button:hover{
     border: 2px solid rgba(20, 20, 20, .9);
     border-radius: 4px;
     box-shadow: 5px 5px 3px rgba(73, 68, 68, .4);
-}
-
-.trail-info-data-container{
-    grid-column: 2/2;
-}
-
-
-.trail-tag-container{
-    display: grid;
-    grid-template-columns: 30% 60%;
 }
 
 .difficulty-Easy{
@@ -294,6 +300,13 @@ button:hover{
         /* background-color: blue; */
     
     }
+    .trail-tag-container{
+        display: grid;
+        grid-template-columns: 30% 60%;
+    }
+    .trail-info-data-container{
+        grid-column: 2/2;
+    }
 
 }
 
@@ -302,10 +315,13 @@ button:hover{
         display:grid;
         grid-template: 10vh auto 10vh / 12vw auto 12vw;
         height:100vh;
-        overflow: scroll;
+        /* overflow: scroll; */
     }
     .logo{
         font-size: 2.3em;
+    }
+    .main{
+        width:550px;
     }
 }
 
@@ -348,6 +364,9 @@ button:hover{
         /* background-color: blue; */
     
     }
+    .main{
+        width:700px;
+    }
 }
 
 @media(min-width:1200px){
@@ -359,6 +378,9 @@ button:hover{
     .logo{
         font-size: 2.9em;
     }
+    .main{
+        width:750px;
+    }
 }
 @media(min-width:1600px){
     .app-view{
@@ -368,5 +390,8 @@ button:hover{
     }
     .logo{
         font-size: 3.2em;
+    }
+    .main{
+        width:800px;
     }
 }

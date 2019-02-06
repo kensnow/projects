@@ -23,7 +23,7 @@ function DashboardProfile(props) {
     console.log(questLinks)
     return (
         // const questMap = 
-        <div className="dashboard-container">
+        <div className="dashboard-container profile-card card" >
             <div className="profile-pic thumbnail"></div>
             <div className="profile-container">
                 <h3>{username}</h3>

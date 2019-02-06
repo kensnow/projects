@@ -9,11 +9,11 @@ function Landing(props) {
 
 
     return (
-        <div className="landing-page landing">
-            <Link className="landing-link landing" to="/details">More Info</Link>
-            <Link className="landing-link landing" to="/signup">Sign Up</Link>
+        <div className="landing-page-container landing">
+            <Link className="landing-link landing button1" to="/details">More Info</Link>
+            <Link className="landing-link landing button1" to="/signup">Sign Up</Link>
             {props.token ? <Link to="/dashboard">Dashboard</Link>: 
-            <Link className="landing-link landing" to="/signin">Log In</Link>}
+            <Link className="landing-link landing button1" to="/signin">Log In</Link>}
         </div>
     )
 }
