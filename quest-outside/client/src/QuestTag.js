@@ -23,7 +23,7 @@ function QuestTag(props) {
             <Link to={{pathname:"/dashboard/quest-info/"+props.tag._id}}>More Info</Link>
            
             {foundQuest ? <button onClick={() => props.completeQuest(props.user._id, props.tag._id, foundQuest._id)}>Complete Quest</button>  : <button onClick={() => props.acceptQuest(props.user._id, props.tag._id)}>Accept Quest</button> }
-
+            
             
             
         </div>

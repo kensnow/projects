@@ -30,8 +30,6 @@ function DashboardProfile(props) {
                 <li>Active Quests: {questLinks}</li>
                 {/* <li>Completed Quests: {completedQuests}</li> */}
             </ul>
-        
-            Suggested Quests: 
         </div>
     )
 }

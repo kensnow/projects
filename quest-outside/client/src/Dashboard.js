@@ -19,9 +19,10 @@ function Dashboard(props) {
         <div>
             <Loading loading={props.loading}>
                 <ErrorMsg errMsg={props.errorMsg}>
+                    <Sidebar/>
                     <DashboardProfile {...props}/>
                     <DashboardQuests {...props}/>
-                    <Sidebar/>
+                    
  
                 </ErrorMsg>
             </Loading>

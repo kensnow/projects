@@ -14,7 +14,6 @@ function QuestList(props) {
     console.log(questArr)
     return (
         <div>
-            test
             {questArr}
         </div>
     )

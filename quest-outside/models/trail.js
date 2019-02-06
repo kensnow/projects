@@ -3,27 +3,24 @@ const objectId = mongoose.Schema.Types.ObjectId
 
 
 const trailSchema = new mongoose.Schema({
+    id:Number,
     name:{
         type:String,
         required:true
     },
-    imgLink:{
-        type:String
-    },
-    relatedObjectives:[{type:objectId, ref:'Objectives'}],
-    relatedQuests:[{type:objectId, ref:'Quests'}],
-    distance:Number,
-    difficulty:{
-        type: String,
-        enum:['green', 'greenBlue', 'blue', 'blueBlack', "black", 'dblack']
-    },
-    elevationGain:Number,
-    description: String,
-    trailHeadGPS:String,
-    trailEndGPS:String,
-    subarea:String,
-    area:String,
-    state:String,
+    type:String,
+    summary:String,
+    difficulty: String,
+    location: String,
+    url:String,
+    imgMedium:String,
+    imgSqSmall:String,
+    length:Number,
+    ascent:Number,
+    high:Number,
+    low:Number,
+    longitude:Number,
+    latitude:Number,
     xpReward:Number
 
 })

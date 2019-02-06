@@ -1,6 +1,6 @@
 const express = require('express')
 const trailRouter = express.Router()
-const Trail = require('../models/hpTrail')
+const Trail = require('../models/trail')
 
 trailRouter.route('/')
     .get((req, res, next) => {

@@ -25,6 +25,7 @@ export default class ProfileProvider extends Component {
         this.signUp = this.signUp.bind(this)
         this.acceptQuest = this.acceptQuest.bind(this)
         this.completeQuest = this.completeQuest.bind(this)
+        this.completeTrail = this.completeTrail.bind(this)
      
     }
     // state  user data
@@ -103,7 +104,26 @@ export default class ProfileProvider extends Component {
     }
 
 
-
+    completeTrail(userId, questId, subDocId, trailId){
+        return userAxios.put("/api/profile/quests",{
+            user: userId,
+            quest: questId,
+            action: "trailComplete",
+            subDocId: subDocId,
+            trailId: trailId
+        })
+        .then(res => {
+            const profile = res.data
+            
+            this.setState( {
+                user:profile
+            })
+            return res
+        })
+        .catch(err => {
+            return err
+        })
+    }
 
 
 
@@ -148,6 +168,7 @@ export default class ProfileProvider extends Component {
             logOut: this.logOut,
             acceptQuest: this.acceptQuest,
             completeQuest: this.completeQuest,
+            completeTrail:this.completeTrail,
             ...this.state 
         }
 

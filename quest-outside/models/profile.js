@@ -42,7 +42,18 @@ const profileSchema = new mongoose.Schema({
         default:50
     },
     activeQuests:[{
-        quest: {type: objectId, ref:'Quest'},
+        quest: {
+            type: objectId, 
+            ref:'Quest',
+        },
+        requiredTrails:[{
+            id: String,
+            isCompleted: {
+                type: Boolean,
+                default: false
+            },
+                completedOn: Date
+            }],
         acceptedOn: {
             type: Date,
             default: Date.now
