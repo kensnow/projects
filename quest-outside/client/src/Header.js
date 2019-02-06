@@ -6,7 +6,7 @@ function Header(props) {
     const signedIn = props.token !== "" ? true : false
     return (
         <header>
-            <Link className="logo signin-link" to="/">Quest Outside</Link>
+            <Link className="logo" to="/">Quest Outside</Link>
             {signedIn ? <Link className="logout-button header-button button" to="/" onClick={props.logOut}>Log Out</Link> : <Link className="signin-link header-button" to="/signin">Sign In</Link>}
         </header>
     )

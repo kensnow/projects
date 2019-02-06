@@ -10,7 +10,7 @@ function QuestLink(props) {
     // console.log("quest:" + props.tag._id) //why the fuck doesnt this work???
     
     return (
-        <div className="questTag">
+        <div className="quest-link">
             <Link to={{pathname:"/dashboard/quest-info/"+props.tag._id}} >{name}</Link>
         </div>
     )

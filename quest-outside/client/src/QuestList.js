@@ -13,7 +13,7 @@ function QuestList(props) {
     })
     console.log(questArr)
     return (
-        <div>
+        <div className="quest-list-container">
             {questArr}
         </div>
     )

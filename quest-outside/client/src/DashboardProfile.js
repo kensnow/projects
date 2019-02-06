@@ -23,13 +23,22 @@ function DashboardProfile(props) {
     console.log(questLinks)
     return (
         // const questMap = 
-        <div>
-            <h4>{username}, level {currentLevel}</h4>
-            <ul>
-                <li>XP: {xp}</li>
-                <li>Active Quests: {questLinks}</li>
-                {/* <li>Completed Quests: {completedQuests}</li> */}
-            </ul>
+        <div className="dashboard-container">
+            <div className="profile-pic thumbnail"></div>
+            <div className="profile-container">
+                <h3>{username}</h3>
+                <h4>Level {currentLevel}</h4>
+                <h5>XP: {xp}</h5>
+                <h5>Next Level: {props.user.nextLevel}</h5>
+            </div>
+            <div className="active-quest-container">
+                <h5>Active Quests:</h5>
+                {questLinks}
+                    {/* <li>Completed Quests: {completedQuests}</li> */}
+           
+
+            </div>
+
         </div>
     )
 }

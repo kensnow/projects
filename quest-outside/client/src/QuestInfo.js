@@ -24,17 +24,24 @@ function QuestInfo(props) {
     //linf trail dat in trail props object.
     //populate trail card, store in array, render array in browser
     return (
-        <div>
+        <div >
             <DashboardProfile {...props}/>
-            <h2>{name}</h2>
-            <h5>{difficulty} XP:{xpReward}</h5>
-            <h5>Required Level: {reqLevel}</h5>
-            <p>{description}</p>
-            <ul className="trail-list">
-                {trailArr}
-            </ul>
-    
-            {foundQuest ? <button onClick={() => props.completeQuest(props.user._id, _id, foundQuest._id)}>Complete Quest</button>  : <button onClick={() => props.acceptQuest(props.user._id, _id)}>Accept Quest</button> }
+            <div className="quest-info-container">
+                <h2>{name}</h2>
+                <h4 className={"difficulty-"+difficulty}>{difficulty}</h4>
+                <h5>XP: {xpReward}</h5>
+                <h5>Required Level: {reqLevel}</h5>
+                <p>{description}</p>
+                <div className="trail-list-container">
+                    <ul>
+                        {trailArr}
+                    </ul>
+                </div>
+
+        
+                {foundQuest ? <button onClick={() => props.completeQuest(props.user._id, _id, foundQuest._id)}>Complete Quest</button>  : <button onClick={() => props.acceptQuest(props.user._id, _id)}>Accept Quest</button> }
+                </div>
+
         </div>
     )
 }

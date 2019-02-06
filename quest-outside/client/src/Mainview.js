@@ -13,6 +13,7 @@ import TrailInfoContainer from './TrailInfoContainer'
 import Trails from "./Trails"
 import ProtectedRoute from "./dataProviders/ProtectedRoute"
 import Admin from "./admin/Admin"
+import Header from './Header'
 
 function Mainview() {
     return (

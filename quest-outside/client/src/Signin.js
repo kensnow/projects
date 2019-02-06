@@ -36,10 +36,10 @@ class Signin extends Component {
     render() {
         const {email, password, errMsg} = this.state
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="form signIn-form" onSubmit={this.handleSubmit}>
                 <input onChange={this.handleChange} name="email" type="text" placeholder="Enter email" value={email} />
                 <input onChange={this.handleChange} name="password" type="text" placeholder="Enter Password" value={password}/>
-                <button>Submit</button>
+                <button className="button1">Submit</button>
                 {errMsg && <p style={{color: "red"}}>{errMsg}</p>}
             </form>
         )
