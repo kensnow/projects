@@ -101,7 +101,7 @@ export default class DataProvider extends Component {
     handleClick(button, timeParam){
 
         ///make get data call with series ID, send state down to chart
-
+        console.log("clicked")
         button.series_id ? this.getData(button.series_id, 3) : this.getData(button, timeParam)
         
     }

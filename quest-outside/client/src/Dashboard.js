@@ -16,7 +16,7 @@ import QuestContainer from "./QuestContainer"
 function Dashboard(props) {
     console.log(props)
     return (
-        <div>
+        <div >
             <Loading loading={props.loading}>
                 <ErrorMsg errMsg={props.errorMsg}>
                     <Sidebar/>

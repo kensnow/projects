@@ -1,0 +1,160 @@
+* {
+    margin: 0px;
+    font-family: 'Prompt', sans-serif;
+    text-decoration: none;
+    
+}
+
+a{
+    text-decoration: inherit;
+    color:inherit;
+    font-size: 1.5em;
+    
+}
+
+a:hover{
+    color: rgb(10, 212, 179)
+}
+
+ul{
+    list-style:none;
+}
+
+body{
+    /* margin: 10px; */
+    color: rgb(32, 32, 32);
+
+}
+
+main{
+    
+}
+
+header{
+    margin: 15px 0;
+}
+
+header>ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.name-title{
+    font-size: 2em;
+}
+
+.project-section{
+    
+    padding-bottom: 80px;
+    
+}
+
+.project-section-container{
+    margin: 0 30px;
+    
+}
+
+.project-section-container > h2{
+    /* margin: 20px 0; */
+    line-height: 3em;
+}
+
+.intro-box{
+    margin:0 20px;
+    margin-top:25%;
+    margin-bottom:25%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.profile-box{
+    display: grid;
+    grid-template-columns: auto auto;
+    
+    
+}
+
+.profile-picture{
+    background-image:url('./assets/ken-snow-profile.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:150px;
+    height:150px;
+    box-shadow: 2px 3px 4px rgba(73, 68, 68, .4);
+    border-radius: 4px;
+
+}
+
+.profile-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.profile-header > h3{
+    color:rgb(128, 128, 128);
+
+}
+
+.project-preview{
+    
+    
+}
+.project-card{
+    
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    margin: 20px 0;
+    
+}
+
+
+.project-card-detail{
+    /* margin: 0 5px 0 20px; */
+    background-color: rgb(24, 118, 224);
+    color:snow;
+    padding: 10px;
+    border-radius: 4px;     
+    
+}
+.project-card-image{
+    width: 120px;
+    height:180px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    
+}
+
+.description-box{
+    margin: 30px 0;
+    
+}
+
+.description-box > p{
+    margin: 5px 0;
+    
+}
+
+.contact-me{
+    margin: 40px 20px;
+}
+
+.contact-me > h3 {
+    font-size: 1.3em;
+}
+
+.contact-list > li{
+    color:rgb(128, 128, 128);
+    
+}
+
+.contact-list > li > a{
+    color: rgb(32, 32, 32);
+    
+}
