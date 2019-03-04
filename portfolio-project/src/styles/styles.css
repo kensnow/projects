@@ -7,9 +7,7 @@
 
 a{
     text-decoration: inherit;
-    color:inherit;
-    font-size: 1.5em;
-    
+    color:inherit;    
 }
 
 a:hover{
@@ -23,6 +21,8 @@ ul{
 body{
     /* margin: 10px; */
     color: rgb(32, 32, 32);
+    min-width: 340px;
+    background-color: snow;
 
 }
 
@@ -37,6 +37,10 @@ header{
 header>ul{
     display: flex;
     justify-content: space-around;
+}
+
+h4{
+    color:rgb(128, 128, 128); 
 }
 
 .name-title{
@@ -72,7 +76,7 @@ header>ul{
 .profile-box{
     display: grid;
     grid-template-columns: auto auto;
-    
+    grid-gap: 10px;
     
 }
 
@@ -91,6 +95,7 @@ header>ul{
     display: flex;
     flex-direction: column;
     justify-content: center;
+  
 
 }
 
@@ -107,6 +112,7 @@ header>ul{
     
     display: grid;
     grid-template-columns: auto auto;
+    
     grid-gap: 10px;
     margin: 20px 0;
     
@@ -141,8 +147,9 @@ header>ul{
     
 }
 
-.contact-me{
-    margin: 40px 20px;
+.app-container > .contact-me{
+    height: 10vh;
+    margin-bottom: 40px;
 }
 
 .contact-me > h3 {
@@ -157,4 +164,99 @@ header>ul{
 .contact-list > li > a{
     color: rgb(32, 32, 32);
     
+}
+
+
+/* Projects styling */
+
+
+
+.project-card-full{
+ margin: 20px;
+
+}
+
+.project-card-full > a{
+    line-height: 2em;
+    text-decoration: underline;
+    
+}
+
+.project-image-full{
+    width: 300px;
+    height: 450px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 20px auto;
+}
+
+.project-description-full{
+    background-color: rgba(134, 26, 58, 0.068);
+    color:rgb(53, 53, 53);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 10px 0;
+    box-shadow: 2px 3px 4px rgba(73, 68, 68, .4);
+  
+}
+
+/* Contact */
+
+.contact-me{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+    align-items: center;
+}
+
+@media(min-width:450px){
+
+    body{
+        max-width: 450px;
+        margin: auto auto;
+    }
+
+    .profile-picture{
+
+        width:200px;
+        height:200px;
+    }
+
+    .profile-header{
+        font-size: 1.2em;
+    }
+
+    .nav-link{
+        font-size:1.3em;
+    }
+
+}
+
+@media(min-width:600px){
+    body{
+        max-width: 550px;
+     
+    }
+
+    .profile-picture{
+        width:250px;
+        height: 250px;
+    }
+
+    .profile-header{
+        font-size: 1.5em;
+    }
+    .nav-link{
+        font-size: 1.5em;
+    }
+}
+
+@media(min-width:900px){
+    body{
+        max-width: 800px;
+     
+    }
+
+
 }

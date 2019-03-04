@@ -17,10 +17,12 @@ function ProjectCard({ title, subTitle, description, technology, thumbnail, gith
                 </div>
                 :
                 <div className="project-card-full">
-                    <div className="project-image-full card-image-full project-info" style={{ backgroundImage: thumbnail }}></div>
                     <h2>{title}</h2>
-                    <h3>{subTitle}</h3>
-                    <p>{description}</p>
+                    <h4>{subTitle}</h4>
+                    <a href={github}>{title} on github</a>
+                    <div className="project-image-full card-image-full project-info" style={{ backgroundImage: thumbnail }}></div>
+
+                    <p className="project-description-full">{description}</p>
                     <h5>Tech: {technologyGroup}</h5>
                     <p>You can see the code for {title} on <a href={github}>github</a></p>
                 </div>

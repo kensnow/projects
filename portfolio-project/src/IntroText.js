@@ -1,6 +1,7 @@
 import React from 'react'
 
 function IntroText() {
+
     return (
         <section className="intro-box">
             <div className="profile-box">
