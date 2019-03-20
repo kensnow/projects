@@ -13,7 +13,7 @@ function componentName() {
             
             <section className="project-section">
                 <div className="project-section-container">
-                    <h2>Projects:</h2>
+                    <h2 className="project-section-title">Projects:</h2>
                     <ProjectPreview type={'card'}/>
                 </div>
 

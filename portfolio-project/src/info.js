@@ -11,7 +11,7 @@ const projectInfo = [
     {
     "title":"Quest Outside",
     "subTitle":"Life is epic!",
-    "description":"Create your profile, start from level 1, and complete hiking quests to gain levels, open up new quests and meet other questers online.  This project is a gamified social network which immerses users in real world challenges.  Some project features include unique users, user authentication and password hashing, multiple database collections, Responsive design, and higher order React components",
+    "description":"Create your profile, start from level 1, and complete hiking quests to gain levels, open up new quests and meet other questers online.  This project is a gamified social network which immerses users in real world challenges.  Some project features include unique users, user authentication and password hashing, multiple database collections, Responsive design, and higher order React components.",
     "technology":["ReactJS", "MongoDB", "Express", "NodeJS", "Axios API"],
     "thumbnail":`url(${require('./styles/assets/quest-outside.png')})`,
     "github":"http://github.com/kensnow/projects/tree/master/quest-outside"

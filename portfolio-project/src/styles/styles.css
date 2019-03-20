@@ -7,11 +7,14 @@
 
 a{
     text-decoration: inherit;
-    color:inherit;    
+    color:inherit;
+    transition: .2s;    
 }
 
 a:hover{
-    color: rgb(10, 212, 179)
+    color: rgb(10, 212, 179);
+    transition: .2s;  
+    
 }
 
 ul{
@@ -22,12 +25,8 @@ body{
     /* margin: 10px; */
     color: rgb(32, 32, 32);
     min-width: 340px;
-    background-color: snow;
+    background-color: whitesmoke;
 
-}
-
-main{
-    
 }
 
 header{
@@ -37,10 +36,21 @@ header{
 header>ul{
     display: flex;
     justify-content: space-around;
+
 }
 
 h4{
     color:rgb(128, 128, 128); 
+}
+
+.download{
+    height:50px;
+    width:50px;
+    background-image:url("./assets/resume.svg");
+    background-size: cover;
+    position:fixed;
+    right:10px;
+    top:50px;
 }
 
 .name-title{
@@ -51,11 +61,19 @@ h4{
     
     padding-bottom: 80px;
     
+    
 }
 
 .project-section-container{
     margin: 0 30px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
     
+}
+
+.project-section-title{
+    font-size:2em;
 }
 
 .project-section-container > h2{
@@ -66,7 +84,7 @@ h4{
 .intro-box{
     margin:0 20px;
     margin-top:25%;
-    margin-bottom:25%;
+    margin-bottom:15%;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -111,10 +129,11 @@ h4{
 .project-card{
     
     display: grid;
-    grid-template-columns: auto auto;
-    
-    grid-gap: 10px;
+    grid-template-columns: 30% 70%;
+    grid-gap: 30px;
     margin: 20px 0;
+    
+
     
 }
 
@@ -128,7 +147,9 @@ h4{
     
 }
 .project-card-image{
-    width: 120px;
+    /* width: 120px; */
+    border: 2px solid black;
+    margin: 5px;
     height:180px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -200,6 +221,11 @@ h4{
   
 }
 
+/* AboutMe */
+.about-me{
+    margin: 10vh 5%;
+}
+
 /* Contact */
 
 .contact-me{
@@ -213,7 +239,7 @@ h4{
 @media(min-width:450px){
 
     body{
-        max-width: 450px;
+        max-width: 440px;
         margin: auto auto;
     }
 
@@ -230,12 +256,16 @@ h4{
     .nav-link{
         font-size:1.3em;
     }
+    /* .project-card{
+        max-width:280px;
+    } */
+
 
 }
 
 @media(min-width:600px){
     body{
-        max-width: 550px;
+        max-width: 580px;
      
     }
 

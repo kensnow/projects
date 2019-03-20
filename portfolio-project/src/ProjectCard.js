@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 function ProjectCard({ title, subTitle, description, technology, thumbnail, github, type }) {
 
@@ -10,7 +11,8 @@ function ProjectCard({ title, subTitle, description, technology, thumbnail, gith
                 <div className="project-card">
                     <div className="project-card-image card-image thumbnail" style={{ backgroundImage: thumbnail }}></div>
                     <div className="project-card-detail">
-                        <h2>{title}</h2>
+                        <h2><Link to='/projects'>{title}</Link></h2>
+                        <h5>Source Code on: <a href={github} target="_blank">Github</a></h5>
                         <h5>Tech: {technologyGroup}</h5>
                     </div>
 
