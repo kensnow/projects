@@ -8,9 +8,9 @@ function ProjectPreview(type) {
     )
 
     return (
-        <section className="project-preview">
+        <>
             {projectCardCollection}
-        </section>
+        </>
     )
 }
 

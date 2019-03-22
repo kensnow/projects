@@ -1,0 +1,294 @@
+* {
+    margin: 0px;
+    font-family: 'Prompt', sans-serif;
+    text-decoration: none;
+    
+}
+
+a{
+    text-decoration: inherit;
+    color:inherit;
+    transition: .2s;    
+}
+
+a:hover{
+    color: rgb(10, 212, 179);
+    transition: .2s;  
+    
+}
+
+ul{
+    list-style:none;
+}
+
+body{
+    /* margin: 10px; */
+    color: rgb(32, 32, 32);
+    min-width: 340px;
+    background-color: whitesmoke;
+
+}
+
+header{
+    margin: 15px 0;
+}
+
+header>ul{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+h4{
+    color:rgb(128, 128, 128); 
+}
+
+.download{
+    height:50px;
+    width:50px;
+    background-image:url("./assets/resume.svg");
+    background-size: cover;
+    position:fixed;
+    right:10px;
+    top:50px;
+}
+
+.name-title{
+    font-size: 2em;
+}
+
+.project-section{
+    
+    padding-bottom: 80px;
+    
+    
+}
+
+.project-section-container{
+    margin: 0 30px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.project-section-title{
+    font-size:2em;
+}
+
+.project-section-container > h2{
+    /* margin: 20px 0; */
+    line-height: 3em;
+}
+
+.intro-box{
+    margin:0 20px;
+    margin-top:25%;
+    margin-bottom:15%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.profile-box{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    
+}
+
+.profile-picture{
+    background-image:url('./assets/ken-snow-profile.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:150px;
+    height:150px;
+    box-shadow: 2px 3px 4px rgba(73, 68, 68, .4);
+    border-radius: 4px;
+
+}
+
+.profile-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+
+}
+
+.profile-header > h3{
+    color:rgb(128, 128, 128);
+
+}
+
+.project-preview{
+    
+    
+}
+.project-card{
+    
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-gap: 30px;
+    margin: 20px 0;
+    
+
+    
+}
+
+
+.project-card-detail{
+    /* margin: 0 5px 0 20px; */
+    background-color: rgb(24, 118, 224);
+    color:snow;
+    padding: 10px;
+    border-radius: 4px;     
+    
+}
+.project-card-image{
+    /* width: 120px; */
+    /* border: 2px solid black; */
+    height:180px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* border-radius: 4px; */
+    
+}
+
+.description-box{
+    margin: 30px 0;
+    
+}
+
+.description-box > p{
+    margin: 5px 0;
+    
+}
+
+.app-container > .contact-me{
+    height: 10vh;
+    margin-bottom: 40px;
+}
+
+.contact-me{
+    margin:20px;
+}
+.contact-me > h3 {
+    font-size: 1.3em;
+}
+
+.contact-list > li{
+    color:rgb(128, 128, 128);
+    
+}
+
+.contact-list > li > a{
+    color: rgb(32, 32, 32);
+    
+}
+
+
+/* Projects styling */
+
+
+
+.project-card-full{
+ margin: 20px;
+
+}
+
+.project-card-full > a{
+    line-height: 2em;
+    text-decoration: underline;
+    
+}
+
+.project-image-full{
+    width: 300px;
+    height: 450px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 20px auto;
+}
+
+.project-description-full{
+    background-color: rgba(134, 26, 58, 0.068);
+    color:rgb(53, 53, 53);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 10px 0;
+    box-shadow: 2px 3px 4px rgba(73, 68, 68, .4);
+  
+}
+
+/* AboutMe */
+.about-me{
+    margin: 10vh 5%;
+}
+
+/* Contact */
+
+.contact-me{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+    align-items: center;
+}
+
+@media(min-width:450px){
+
+    body{
+        max-width: 440px;
+        margin: auto auto;
+    }
+
+    .profile-picture{
+
+        width:200px;
+        height:200px;
+    }
+
+    .profile-header{
+        font-size: 1.2em;
+    }
+
+    .nav-link{
+        font-size:1.3em;
+    }
+    /* .project-card{
+        max-width:280px;
+    } */
+
+
+}
+
+@media(min-width:600px){
+    body{
+        max-width: 580px;
+     
+    }
+
+    .profile-picture{
+        width:250px;
+        height: 250px;
+    }
+
+    .profile-header{
+        font-size: 1.5em;
+    }
+    .nav-link{
+        font-size: 1.5em;
+    }
+}
+
+@media(min-width:900px){
+    body{
+        max-width: 800px;
+     
+    }
+
+
+}

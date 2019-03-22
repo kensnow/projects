@@ -10,13 +10,8 @@ function componentName() {
             <section className="intro-section">
                 <IntroText />   
             </section>
-            
-            <section className="project-section">
-                <div className="project-section-container">
-                    <h2 className="project-section-title">Projects:</h2>
-                    <ProjectPreview type={'card'}/>
-                </div>
-
+            <section className="project-section">      
+                <ProjectPreview type={'card'}/>
             </section>
 
             <ContactMe />

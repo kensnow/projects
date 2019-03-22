@@ -8,15 +8,13 @@ function ProjectCard({ title, subTitle, description, technology, thumbnail, gith
     return (
         <div className="project-preview-card-container">
             {type === 'card' ?
-                <div className="project-card">
-                    <div className="project-card-image card-image thumbnail" style={{ backgroundImage: thumbnail }}></div>
-                    <div className="project-card-detail">
-                        <h2><Link to='/projects'>{title}</Link></h2>
-                        <h5>Source Code on: <a href={github} target="_blank">Github</a></h5>
-                        <h5>Tech: {technologyGroup}</h5>
-                    </div>
+                <Link to='/projects'>
+                <div className="project-card-image" style={{ backgroundImage: thumbnail }}>
+                    {/* <div className="project-card-image card-image thumbnail" style={{ backgroundImage: thumbnail }}></div> */}
 
                 </div>
+                </Link>
+
                 :
                 <div className="project-card-full">
                     <h2>{title}</h2>
