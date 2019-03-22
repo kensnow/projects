@@ -9,9 +9,10 @@ function ProjectCard({ title, subTitle, description, technology, thumbnail, gith
         <div className="project-preview-card-container">
             {type === 'card' ?
                 <Link to='/projects'>
-                <div className="project-card-image" style={{ backgroundImage: thumbnail }}>
+                <div className="project-card-image-container">
+                    <img className="project-card-image" src={thumbnail} />
                     {/* <div className="project-card-image card-image thumbnail" style={{ backgroundImage: thumbnail }}></div> */}
-
+                    <h3 className="project-card-title">{title}</h3>
                 </div>
                 </Link>
 
