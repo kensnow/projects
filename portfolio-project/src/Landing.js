@@ -1,6 +1,6 @@
 import React from 'react'
 import IntroText from './IntroText'
-import ProjectPreview from './ProjectPreview'
+import Projects from './Projects'
 import ContactMe from './ContactMe'
 
 
@@ -11,7 +11,7 @@ function componentName() {
                 <IntroText />   
             </section>
             <section className="project-section">      
-                <ProjectPreview type={'card'}/>
+                <Projects type={'card'}/>
             </section>
 
             <ContactMe />

@@ -1,12 +1,17 @@
 import React from 'react'
-import ProjectPreview from './ProjectPreview'
+import projectInfo from './info'
+import ProjectCard from './ProjectCard'
 
-function Projects() {
+function Projects(type) {
+
+    const projectCardCollection = projectInfo.map((project, i) => <ProjectCard key={i}{...project} {...type} />)
+
     return (
-        <div>
-            <ProjectPreview />
-        </div>
+        <>
+            {projectCardCollection}
+        </>
     )
+    
 }
 
 export default Projects

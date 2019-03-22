@@ -7,7 +7,7 @@ import AboutMe from './AboutMe'
 
 function MainView() {
     return (
-        <div>
+        <div className="main-view">
             <Route exact path="/" component={Landing}/>
             <Route path="/projects" component={Projects} />
             <Route path="/about" component={AboutMe} />

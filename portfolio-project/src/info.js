@@ -25,7 +25,15 @@ const projectInfo = [
     // "thumbnail":`url(${require('./styles/assets/ski-local-sq.png')})`,
     "thumbnail":`${require('./styles/assets/ski-local-sq.png')}`,
     "github":"http://github.com/kensnow/ski-local"
+    },
+    {
+    "title":"@kensnow",
+    "description":"View My Github",
+    "thumbnail":`${require('./styles/assets/GitHub_Logo.png')}`,
+    "technology": ["na"],
+    "github":"http://github.com/kensnow/"
     }
+    
 ]
 
 export default projectInfo

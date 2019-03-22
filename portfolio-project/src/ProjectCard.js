@@ -6,29 +6,49 @@ function ProjectCard({ title, subTitle, description, technology, thumbnail, gith
     const technologyGroup = technology.join(', ')
 
     return (
+        <>
+        {type === 'card' ?
         <div className="project-preview-card-container">
-            {type === 'card' ?
-                <Link to='/projects'>
-                <div className="project-card-image-container">
-                    <img className="project-card-image" src={thumbnail} />
-                    {/* <div className="project-card-image card-image thumbnail" style={{ backgroundImage: thumbnail }}></div> */}
-                    <h3 className="project-card-title">{title}</h3>
-                </div>
-                </Link>
-
+                {title === '@kensnow' ? 
+                <a href={github}>
+                    <div className="project-card-image-container">
+                        <img className="project-card-image project-card-link" src={thumbnail} />
+                        <h3 className="project-card-title">{title}</h3>
+                    </div>
+                </a>
                 :
-                <div className="project-card-full">
-                    <h2>{title}</h2>
-                    <h4>{subTitle}</h4>
-                    <a href={github}>{title} on github</a>
-                    <div className="project-image-full card-image-full project-info" style={{ backgroundImage: thumbnail }}></div>
+                <Link to='/projects'>
+                    <div className="project-card-image-container">
+                        <img className="project-card-image project-card-link" src={thumbnail} />
+                        <h3 className="project-card-title">{title}</h3>
+                    </div>
+                </Link>
+                }
 
-                    <p className="project-description-full">{description}</p>
-                    <h5>Tech: {technologyGroup}</h5>
-                    <p>You can see the code for {title} on <a href={github}>github</a></p>
-                </div>
-            }
         </div>
+                :
+                <>
+                {title !== '@kensnow' ?
+                <div className="project-card-full">
+                    <div className="project-card-description">
+                        <h2>{title}</h2>
+                        <h4>{subTitle}</h4>
+                        <a href={github}>{title} on github</a>
+                        <p className="project-description-full">{description}</p>
+                        <h5>Tech: {technologyGroup}</h5>
+                        <p>You can see the code for {title} on <a href={github}>github</a></p>
+                    </div>
+                    <img className="project-card-image" src={thumbnail} />
+                </div>
+                :
+                null
+                
+                }
+                </>
+
+        } 
+        </>
+        
     )
 }
 
