@@ -14,9 +14,9 @@ function IntroText() {
                 <p>Welcome!  My name is Ken Snow.  I enjoy creating awesome web apps that are beautiful, functional, and useful.</p>
                 <div className="switch-container">
                     <p className="switch-text">{toggle ? 'OK!': 'more?'}</p>
-                    <label class="switch">
+                    <label className="switch">
                         <input type="checkbox" onClick={()=> setToggle(!toggle)}/>
-                        <span class="slider round"></span>
+                        <span className="slider round"></span>
                     </label>
 
 
